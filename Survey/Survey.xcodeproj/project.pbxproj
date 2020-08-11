@@ -15,6 +15,8 @@
 		1916F0A224E2BF020024FF79 /* SurveyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0A124E2BF020024FF79 /* SurveyUITests.swift */; };
 		1916F0B124E2C1B10024FF79 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0B024E2C1B10024FF79 /* Coordinator.swift */; };
 		1916F0B324E2C1F90024FF79 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0B224E2C1F90024FF79 /* AppCoordinator.swift */; };
+		1916F0BB24E2C4DC0024FF79 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0B924E2C4DC0024FF79 /* LandingViewController.swift */; };
+		1916F0BC24E2C4DC0024FF79 /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1916F0BA24E2C4DC0024FF79 /* LandingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		1916F0A324E2BF020024FF79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1916F0B024E2C1B10024FF79 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1916F0B224E2C1F90024FF79 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		1916F0B924E2C4DC0024FF79 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		1916F0BA24E2C4DC0024FF79 /* LandingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		1916F07E24E2BF010024FF79 /* Survey */ = {
 			isa = PBXGroup;
 			children = (
+				1916F0B424E2C4200024FF79 /* Views */,
 				1916F0AF24E2C1940024FF79 /* Coordinator */,
 				1916F07F24E2BF010024FF79 /* AppDelegate.swift */,
 				1916F08524E2BF010024FF79 /* Main.storyboard */,
@@ -135,6 +140,16 @@
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
+		};
+		1916F0B424E2C4200024FF79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1916F0B924E2C4DC0024FF79 /* LandingViewController.swift */,
+				1916F0BA24E2C4DC0024FF79 /* LandingViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -241,6 +256,7 @@
 			files = (
 				1916F08C24E2BF010024FF79 /* LaunchScreen.storyboard in Resources */,
 				1916F08924E2BF010024FF79 /* Assets.xcassets in Resources */,
+				1916F0BC24E2C4DC0024FF79 /* LandingViewController.xib in Resources */,
 				1916F08724E2BF010024FF79 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +284,7 @@
 			files = (
 				1916F0B124E2C1B10024FF79 /* Coordinator.swift in Sources */,
 				1916F0B324E2C1F90024FF79 /* AppCoordinator.swift in Sources */,
+				1916F0BB24E2C4DC0024FF79 /* LandingViewController.swift in Sources */,
 				1916F08024E2BF010024FF79 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

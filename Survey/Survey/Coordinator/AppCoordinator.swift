@@ -19,5 +19,7 @@ public class AppCoordinator: Coordinator {
     }
     
     func start() {
+        let landingViewController = LandingViewController()
+        navigationController.show(landingViewController, sender: nil)
     }
 }
