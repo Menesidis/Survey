@@ -25,7 +25,8 @@ public class AppCoordinator: Coordinator {
     }
     
     private func showQuestions() {
-        let questionsViewController = QuestionViewController()
+        let reactor = QuestionReactor()
+        let questionsViewController = QuestionViewController(reactor: reactor)
         navigationController.show(questionsViewController, sender: nil)
     }
 }
