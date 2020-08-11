@@ -24,6 +24,10 @@
 		1916F0C624E2E02C0024FF79 /* QuestionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0C524E2E02C0024FF79 /* QuestionReactor.swift */; };
 		1916F0C924E2EEB00024FF79 /* QuestionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0C824E2EEB00024FF79 /* QuestionsInteractor.swift */; };
 		1916F0CB24E2EF290024FF79 /* InteractorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0CA24E2EF290024FF79 /* InteractorType.swift */; };
+		1916F0CE24E2EF5C0024FF79 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0CD24E2EF5C0024FF79 /* Question.swift */; };
+		1916F0D024E2F3AC0024FF79 /* QuestionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0CF24E2F3AC0024FF79 /* QuestionDetails.swift */; };
+		1916F0D224E2F4190024FF79 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0D124E2F4190024FF79 /* Presentable.swift */; };
+		1916F0D424E2F4500024FF79 /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0D324E2F4500024FF79 /* BusinessModel.swift */; };
 		C0B7A228FB980B06DCF0DD63 /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */; };
 		CE448228482A46D63BE6B269 /* Pods_Survey_SurveyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +73,10 @@
 		1916F0C524E2E02C0024FF79 /* QuestionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReactor.swift; sourceTree = "<group>"; };
 		1916F0C824E2EEB00024FF79 /* QuestionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsInteractor.swift; sourceTree = "<group>"; };
 		1916F0CA24E2EF290024FF79 /* InteractorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorType.swift; sourceTree = "<group>"; };
+		1916F0CD24E2EF5C0024FF79 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		1916F0CF24E2F3AC0024FF79 /* QuestionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetails.swift; sourceTree = "<group>"; };
+		1916F0D124E2F4190024FF79 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		1916F0D324E2F4500024FF79 /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77319F7CC60B77363C36276B /* Pods-Survey-SurveyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey-SurveyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Survey-SurveyUITests/Pods-Survey-SurveyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey_SurveyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +140,7 @@
 		1916F07E24E2BF010024FF79 /* Survey */ = {
 			isa = PBXGroup;
 			children = (
+				1916F0CC24E2EF4E0024FF79 /* Models */,
 				1916F0C724E2EE9A0024FF79 /* Interactor */,
 				1916F0AF24E2C1940024FF79 /* Coordinator */,
 				1916F0BD24E2CED10024FF79 /* Extensions */,
@@ -207,6 +216,33 @@
 				1916F0C824E2EEB00024FF79 /* QuestionsInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1916F0CC24E2EF4E0024FF79 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1916F0D624E2F4760024FF79 /* Business models */,
+				1916F0D524E2F4660024FF79 /* Presentable models */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1916F0D524E2F4660024FF79 /* Presentable models */ = {
+			isa = PBXGroup;
+			children = (
+				1916F0CF24E2F3AC0024FF79 /* QuestionDetails.swift */,
+				1916F0D124E2F4190024FF79 /* Presentable.swift */,
+			);
+			path = "Presentable models";
+			sourceTree = "<group>";
+		};
+		1916F0D624E2F4760024FF79 /* Business models */ = {
+			isa = PBXGroup;
+			children = (
+				1916F0D324E2F4500024FF79 /* BusinessModel.swift */,
+				1916F0CD24E2EF5C0024FF79 /* Question.swift */,
+			);
+			path = "Business models";
 			sourceTree = "<group>";
 		};
 		D6F24D677611C846E4BB2788 /* Frameworks */ = {
@@ -474,10 +510,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1916F0B124E2C1B10024FF79 /* Coordinator.swift in Sources */,
+				1916F0D024E2F3AC0024FF79 /* QuestionDetails.swift in Sources */,
+				1916F0D424E2F4500024FF79 /* BusinessModel.swift in Sources */,
 				1916F0B324E2C1F90024FF79 /* AppCoordinator.swift in Sources */,
 				1916F0C924E2EEB00024FF79 /* QuestionsInteractor.swift in Sources */,
 				1916F0C224E2D2B30024FF79 /* QuestionViewController.swift in Sources */,
+				1916F0D224E2F4190024FF79 /* Presentable.swift in Sources */,
 				1916F0BB24E2C4DC0024FF79 /* LandingViewController.swift in Sources */,
+				1916F0CE24E2EF5C0024FF79 /* Question.swift in Sources */,
 				1916F08024E2BF010024FF79 /* AppDelegate.swift in Sources */,
 				1916F0CB24E2EF290024FF79 /* InteractorType.swift in Sources */,
 				1916F0C624E2E02C0024FF79 /* QuestionReactor.swift in Sources */,
