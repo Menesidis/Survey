@@ -9,8 +9,13 @@
 import UIKit
 import ReactorKit
 import RxSwift
+import RxCocoa
 
 class QuestionViewController: UIViewController {
+    
+    lazy var previousBarButton = UIBarButtonItem(title: "Previous", style: .done, target: self, action: nil)
+    lazy var nextBarButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: nil)
+    var disposeBag = DisposeBag()
     
     init(reactor: QuestionReactor) {
         print("♻️🆕 \(#file): \(#function)")
@@ -25,7 +30,47 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+    
+    private func setupView() {
+        previousBarButton.tintColor = .blue
+        nextBarButton.tintColor = .blue
+        navigationItem.rightBarButtonItems = [nextBarButton, previousBarButton]
+    }
+}
 
-        // Do any additional setup after loading the view.
+extension QuestionViewController: StoryboardView {
+    
+    typealias Reactor = QuestionReactor
+    
+    func bind(reactor: QuestionReactor) {
+        
+        // MARK: Actions
+        Observable.just(Void())
+            .map {Reactor.Action.load}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        // MARK: States
+        let reactorDriver = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
+        
+        reactorDriver
+            .map {$0.previousButtonIsEnabled}
+            .distinctUntilChanged()
+            .drive(previousBarButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        reactorDriver
+            .map {$0.nextButtonIsEnabled}
+            .distinctUntilChanged()
+            .drive(nextBarButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        reactorDriver
+            .map {$0.title}
+            .distinctUntilChanged()
+            .drive(rx.title)
+            .disposed(by: disposeBag)
     }
 }
