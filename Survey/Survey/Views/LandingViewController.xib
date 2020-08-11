@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LandingViewController" customModule="Survey" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionLabel" destination="num-09-EcU" id="UOw-eu-Uag"/>
+                <outlet property="startButton" destination="JSS-6R-oko" id="T1s-ye-id8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,7 +18,31 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="num-09-EcU">
+                    <rect key="frame" x="20" y="84" width="374" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSS-6R-oko">
+                    <rect key="frame" x="25" y="184.5" width="364" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="hH2-n1-cse"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="num-09-EcU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2WW-N4-Kia"/>
+                <constraint firstItem="num-09-EcU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="4fr-Un-r2d"/>
+                <constraint firstItem="JSS-6R-oko" firstAttribute="top" secondItem="num-09-EcU" secondAttribute="bottom" constant="80" id="5W2-Vf-0u5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="num-09-EcU" secondAttribute="trailing" constant="20" id="Jgo-b0-Sgm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JSS-6R-oko" secondAttribute="trailing" constant="25" id="NQd-tY-FWQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JSS-6R-oko" secondAttribute="bottom" constant="10" id="SCJ-lU-31C"/>
+                <constraint firstItem="JSS-6R-oko" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="owk-jz-8hh"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="142"/>
         </view>
