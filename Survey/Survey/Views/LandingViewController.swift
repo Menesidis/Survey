@@ -8,14 +8,18 @@
 
 import UIKit
 
-class LandingViewController: UIViewController {
+// Class protocol could be adopted only by class object types
+protocol LandingViewControllerDelegate: class {
+    func landingViewControllerDidTapStartSurvey(landingViewController: LandingViewController)
+}
 
+class LandingViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    weak var delegate: LandingViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
     }
     
@@ -32,5 +36,10 @@ class LandingViewController: UIViewController {
         startButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
         startButton.titleLabel?.adjustsFontForContentSizeCategory = true
         startButton.rounded(cornerRadius: 15.0, borderColor: .blue, borderWidth: 0.5)
+    }
+    
+    // MARK - Actions
+    @IBAction func startButtonTapped(_ sender: Any) {
+        delegate?.landingViewControllerDidTapStartSurvey(landingViewController: self)
     }
 }

@@ -20,6 +20,18 @@ public class AppCoordinator: Coordinator {
     
     func start() {
         let landingViewController = LandingViewController()
+        landingViewController.delegate = self
         navigationController.show(landingViewController, sender: nil)
+    }
+    
+    private func showQuestions() {
+        let questionsViewController = QuestionViewController()
+        navigationController.show(questionsViewController, sender: nil)
+    }
+}
+
+extension AppCoordinator: LandingViewControllerDelegate {
+    func landingViewControllerDidTapStartSurvey(landingViewController: LandingViewController) {
+        showQuestions()
     }
 }
