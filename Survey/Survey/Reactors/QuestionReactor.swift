@@ -13,7 +13,8 @@ import ReactorKit
 final class QuestionReactor: Reactor {
     
     let initialState: State
-
+    private let interactor: QuestionsInteractorType
+    
     deinit {
         print("♻️🚮 \(#file): \(#function)")
     }
