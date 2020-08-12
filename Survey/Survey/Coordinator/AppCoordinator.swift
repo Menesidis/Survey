@@ -25,7 +25,9 @@ public class AppCoordinator: Coordinator {
     }
     
     private func showQuestions() {
-        let interactor = QuestionsInteractor()
+        let httpClient = HTTPClient()
+        let repository = QuestionsRepository(httpClient: httpClient)
+        let interactor = QuestionsInteractor(questionsRepository: repository)
         let reactor = QuestionReactor(interactor: interactor)
         let questionsViewController = QuestionViewController(reactor: reactor)
         navigationController.show(questionsViewController, sender: nil)
