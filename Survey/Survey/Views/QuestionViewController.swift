@@ -76,6 +76,20 @@ extension QuestionViewController: StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+       nextBarButton
+            .rx
+            .tap
+            .map {Reactor.Action.next}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        previousBarButton
+             .rx
+             .tap
+             .map {Reactor.Action.previous}
+             .bind(to: reactor.action)
+             .disposed(by: disposeBag)
+        
         // MARK: States
         let reactorDriver = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
         

@@ -19,7 +19,7 @@ final class QuestionReactor: Reactor {
         print("♻️🚮 \(#file): \(#function)")
     }
 
-    init(title: String = "Question -/-",
+    init(title: String = "-",
          name: String = "-",
          submittedQuestions: String = "-",
          previousButtonIsEnabled: Bool = false,
@@ -37,6 +37,8 @@ final class QuestionReactor: Reactor {
     
     enum Action {
         case load
+        case next
+        case previous
     }
 
     enum Mutation {
@@ -51,15 +53,22 @@ final class QuestionReactor: Reactor {
     func mutate(action: QuestionReactor.Action) -> Observable<QuestionReactor.Mutation> {
         switch action {
         case .load:
-            return interactor.load().flatMapLatest { question in
-                return Observable.concat([
-                    Observable.just(Mutation.setTitle(title: question.title)),
-                    Observable.just(Mutation.setName(name: question.name)),
-                    Observable.just(Mutation.setSubmittedQuestions(submittedQuestions: question.submittedQuestions)),
-                    Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: question.previousEnabled)),
-                    Observable.just(Mutation.setNextButtonIsEnabled(enabled: question.nextEnabled)),
-                    Observable.just(Mutation.setButtonType(buttonType: question.buttonType))
-                ])
+            return interactor
+                .load()
+                .flatMapLatest { [unowned self] questionDetails in
+                    return self.updateUI(questionDetails: questionDetails)
+            }
+        case .next:
+            return interactor
+                .next()
+                .flatMapLatest { questionDetails in
+                    return self.updateUI(questionDetails: questionDetails)
+            }
+        case .previous:
+            return interactor
+                .previous()
+                .flatMapLatest { questionDetails in
+                    return self.updateUI(questionDetails: questionDetails)
             }
         }
     }
@@ -91,5 +100,16 @@ final class QuestionReactor: Reactor {
         var previousButtonIsEnabled: Bool
         var nextButtonIsEnabled: Bool
         var buttonType: ButtonType
+    }
+    
+    private func updateUI(questionDetails: QuestionDetails) -> Observable<QuestionReactor.Mutation> {
+        return Observable.concat([
+            Observable.just(Mutation.setTitle(title: questionDetails.title)),
+            Observable.just(Mutation.setName(name: questionDetails.name)),
+            Observable.just(Mutation.setSubmittedQuestions(submittedQuestions: questionDetails.submittedQuestions)),
+            Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: questionDetails.previousEnabled)),
+            Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
+            Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType))
+        ])
     }
 }
