@@ -1,31 +1,41 @@
 PODS:
-  - ReactorKit (2.0.1):
-    - RxSwift (~> 5.0)
-  - RxCocoa (5.0.0):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.0.0):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.0)
+  - Alamofire (4.9.0)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Moya/RxSwift (13.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - ReactorKit (1.2.1):
+    - RxSwift (>= 4.0.0)
+  - Result (4.1.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
 
 DEPENDENCIES:
+  - Moya/RxSwift
   - ReactorKit
   - RxCocoa
-  - RxSwift
+  - RxSwift (= 4.5.0)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - Moya
     - ReactorKit
+    - Result
     - RxCocoa
-    - RxRelay
     - RxSwift
 
 SPEC CHECKSUMS:
-  ReactorKit: a63c5e11e0fd32d59d672e54178b0ed2876b764b
-  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
-  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
-  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  ReactorKit: 8be57f0527ad1ac2963cd5c338274a46a01e57a3
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
-PODFILE CHECKSUM: 6794ed35f4b5e6993a5c95900409499f79f393b6
+PODFILE CHECKSUM: 8d0bfc2807c3f03671582ebd0bceee25fb86acd2
 
 COCOAPODS: 1.8.3

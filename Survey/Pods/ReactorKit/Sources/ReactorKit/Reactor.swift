@@ -8,11 +8,8 @@
 
 import RxSwift
 
-@available(*, obsoleted: 0, renamed: "Never")
-public typealias NoAction = Never
-
-@available(*, obsoleted: 0, renamed: "Never")
-public typealias NoMutation = Never
+public struct NoAction {}
+public struct NoMutation {}
 
 /// A Reactor is an UI-independent layer which manages the state of a view. The foremost role of a
 /// reactor is to separate control flow from a view. Every view has its corresponding reactor and
@@ -69,7 +66,6 @@ private var actionKey = "action"
 private var currentStateKey = "currentState"
 private var stateKey = "state"
 private var disposeBagKey = "disposeBag"
-private var isStubEnabledKey = "isStubEnabled"
 private var stubKey = "stub"
 
 
@@ -77,7 +73,7 @@ private var stubKey = "stub"
 
 extension Reactor {
   private var _action: ActionSubject<Action> {
-    if self.isStubEnabled {
+    if self.stub.isEnabled {
       return self.stub.action
     } else {
       return self.associatedObject(forKey: &actionKey, default: .init())
@@ -98,7 +94,7 @@ extension Reactor {
   }
 
   private var _state: Observable<State> {
-    if self.isStubEnabled {
+    if self.stub.isEnabled {
       return self.stub.state.asObservable()
     } else {
       return self.associatedObject(forKey: &stateKey, default: self.createStateStream())
@@ -171,11 +167,6 @@ extension Reactor where Action == Mutation {
 // MARK: - Stub
 
 extension Reactor {
-  public var isStubEnabled: Bool {
-    set { self.setAssociatedObject(newValue, forKey: &isStubEnabledKey) }
-    get { return self.associatedObject(forKey: &isStubEnabledKey, default: false) }
-  }
-
   public var stub: Stub<Self> {
     return self.associatedObject(
       forKey: &stubKey,
