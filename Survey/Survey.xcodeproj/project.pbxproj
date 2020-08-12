@@ -29,6 +29,12 @@
 		1916F0D224E2F4190024FF79 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0D124E2F4190024FF79 /* Presentable.swift */; };
 		1916F0D424E2F4500024FF79 /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0D324E2F4500024FF79 /* BusinessModel.swift */; };
 		1916F0DA24E3BDD50024FF79 /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0D924E3BDD50024FF79 /* ButtonType.swift */; };
+		1916F0DD24E3D51E0024FF79 /* QuestionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0DC24E3D51E0024FF79 /* QuestionsRepository.swift */; };
+		1916F0DF24E3D5CD0024FF79 /* RepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0DE24E3D5CD0024FF79 /* RepositoryType.swift */; };
+		1916F0E224E3D6460024FF79 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0E124E3D6460024FF79 /* HTTPClient.swift */; };
+		1916F0E624E3E03C0024FF79 /* QuestionTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0E524E3E03C0024FF79 /* QuestionTarget.swift */; };
+		1916F0E824E401F00024FF79 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0E724E401F00024FF79 /* EntityType.swift */; };
+		1916F0EA24E402440024FF79 /* QuestionsEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0E924E402440024FF79 /* QuestionsEntities.swift */; };
 		C0B7A228FB980B06DCF0DD63 /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */; };
 		CE448228482A46D63BE6B269 /* Pods_Survey_SurveyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +85,12 @@
 		1916F0D124E2F4190024FF79 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		1916F0D324E2F4500024FF79 /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		1916F0D924E3BDD50024FF79 /* ButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
+		1916F0DC24E3D51E0024FF79 /* QuestionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsRepository.swift; sourceTree = "<group>"; };
+		1916F0DE24E3D5CD0024FF79 /* RepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryType.swift; sourceTree = "<group>"; };
+		1916F0E124E3D6460024FF79 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		1916F0E524E3E03C0024FF79 /* QuestionTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTarget.swift; sourceTree = "<group>"; };
+		1916F0E724E401F00024FF79 /* EntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
+		1916F0E924E402440024FF79 /* QuestionsEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsEntities.swift; sourceTree = "<group>"; };
 		2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77319F7CC60B77363C36276B /* Pods-Survey-SurveyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey-SurveyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Survey-SurveyUITests/Pods-Survey-SurveyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey_SurveyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +154,8 @@
 		1916F07E24E2BF010024FF79 /* Survey */ = {
 			isa = PBXGroup;
 			children = (
+				1916F0E024E3D6370024FF79 /* Network */,
+				1916F0DB24E3D5010024FF79 /* Repository */,
 				1916F0CC24E2EF4E0024FF79 /* Models */,
 				1916F0C724E2EE9A0024FF79 /* Interactor */,
 				1916F0AF24E2C1940024FF79 /* Coordinator */,
@@ -248,6 +262,42 @@
 			path = "Business models";
 			sourceTree = "<group>";
 		};
+		1916F0DB24E3D5010024FF79 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1916F0DC24E3D51E0024FF79 /* QuestionsRepository.swift */,
+				1916F0DE24E3D5CD0024FF79 /* RepositoryType.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1916F0E024E3D6370024FF79 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1916F0E324E3D69F0024FF79 /* Entities */,
+				1916F0E424E3DFFB0024FF79 /* Targets */,
+				1916F0E124E3D6460024FF79 /* HTTPClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1916F0E324E3D69F0024FF79 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				1916F0E724E401F00024FF79 /* EntityType.swift */,
+				1916F0E924E402440024FF79 /* QuestionsEntities.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		1916F0E424E3DFFB0024FF79 /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				1916F0E524E3E03C0024FF79 /* QuestionTarget.swift */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
 		D6F24D677611C846E4BB2788 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,7 +332,7 @@
 				1916F07824E2BF010024FF79 /* Sources */,
 				1916F07924E2BF010024FF79 /* Frameworks */,
 				1916F07A24E2BF010024FF79 /* Resources */,
-				F69BE9F824C8868FCED2D0FC /* [CP] Embed Pods Frameworks */,
+				96ABEB620C5C36A799F9E91B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -320,7 +370,7 @@
 				1916F09924E2BF020024FF79 /* Sources */,
 				1916F09A24E2BF020024FF79 /* Frameworks */,
 				1916F09B24E2BF020024FF79 /* Resources */,
-				69CD2701E0941B2A6D6FF9B7 /* [CP] Embed Pods Frameworks */,
+				2EB8CB1F75F82C04C64BABBC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -405,7 +455,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		69CD2701E0941B2A6D6FF9B7 /* [CP] Embed Pods Frameworks */ = {
+		2EB8CB1F75F82C04C64BABBC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -420,6 +470,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Survey-SurveyUITests/Pods-Survey-SurveyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96ABEB620C5C36A799F9E91B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Survey/Pods-Survey-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Survey/Pods-Survey-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Survey/Pods-Survey-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9AD8CC03CFA6EFEAB29D53E9 /* [CP] Check Pods Manifest.lock */ = {
@@ -488,23 +555,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F69BE9F824C8868FCED2D0FC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Survey/Pods-Survey-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Survey/Pods-Survey-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Survey/Pods-Survey-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -513,18 +563,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1916F0B124E2C1B10024FF79 /* Coordinator.swift in Sources */,
+				1916F0DF24E3D5CD0024FF79 /* RepositoryType.swift in Sources */,
+				1916F0E224E3D6460024FF79 /* HTTPClient.swift in Sources */,
 				1916F0D024E2F3AC0024FF79 /* QuestionDetails.swift in Sources */,
 				1916F0D424E2F4500024FF79 /* BusinessModel.swift in Sources */,
 				1916F0B324E2C1F90024FF79 /* AppCoordinator.swift in Sources */,
 				1916F0C924E2EEB00024FF79 /* QuestionsInteractor.swift in Sources */,
+				1916F0DD24E3D51E0024FF79 /* QuestionsRepository.swift in Sources */,
 				1916F0C224E2D2B30024FF79 /* QuestionViewController.swift in Sources */,
 				1916F0D224E2F4190024FF79 /* Presentable.swift in Sources */,
+				1916F0EA24E402440024FF79 /* QuestionsEntities.swift in Sources */,
 				1916F0BB24E2C4DC0024FF79 /* LandingViewController.swift in Sources */,
 				1916F0CE24E2EF5C0024FF79 /* Question.swift in Sources */,
 				1916F08024E2BF010024FF79 /* AppDelegate.swift in Sources */,
 				1916F0DA24E3BDD50024FF79 /* ButtonType.swift in Sources */,
+				1916F0E624E3E03C0024FF79 /* QuestionTarget.swift in Sources */,
 				1916F0CB24E2EF290024FF79 /* InteractorType.swift in Sources */,
 				1916F0C624E2E02C0024FF79 /* QuestionReactor.swift in Sources */,
+				1916F0E824E401F00024FF79 /* EntityType.swift in Sources */,
 				1916F0BF24E2D0400024FF79 /* UIViewAdditions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
