@@ -55,16 +55,12 @@ class QuestionViewController: UIViewController {
         submittedQuestionsLabel.adjustsFontForContentSizeCategory = true
         submittedQuestionsLabel.backgroundColor = .white
         
-        submitButton.setTitle("Submit", for: .normal)
-        submitButton.backgroundColor = .white
-        submitButton.setTitleColor(.blue, for: .normal)
         submitButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
         submitButton.titleLabel?.adjustsFontForContentSizeCategory = true
-        submitButton.rounded(cornerRadius: 15.0, borderColor: .blue, borderWidth: 0.5)
+        submitButton.rounded(cornerRadius: 15.0)
         
-        previousBarButton.tintColor = .blue
-        nextBarButton.tintColor = .blue
         navigationItem.rightBarButtonItems = [nextBarButton, previousBarButton]
+        view.backgroundColor = .gray
     }
 }
 

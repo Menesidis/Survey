@@ -31,10 +31,10 @@ class LandingViewController: UIViewController {
         
         startButton.setTitle("Start survey", for: .normal)
         startButton.backgroundColor = .white
-        startButton.setTitleColor(.blue, for: .normal)
         startButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
         startButton.titleLabel?.adjustsFontForContentSizeCategory = true
-        startButton.rounded(cornerRadius: 15.0, borderColor: .blue, borderWidth: 0.5)
+        startButton.rounded(cornerRadius: 15.0)
+        view.backgroundColor = .gray
     }
     
     // MARK - Actions
