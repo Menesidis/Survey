@@ -28,7 +28,6 @@ class LandingViewController: UIViewController {
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         descriptionLabel.adjustsFontForContentSizeCategory = true
         descriptionLabel.text = "Welcome to survey app"
-        descriptionLabel.numberOfLines = 0
         
         startButton.setTitle("Start survey", for: .normal)
         startButton.backgroundColor = .white
