@@ -31,7 +31,8 @@ final class QuestionReactor: Reactor {
                                   name: name,
                                   submittedQuestions: submittedQuestions,
                                   previousButtonIsEnabled: previousButtonIsEnabled,
-                                  nextButtonIsEnabled: nextButtonIsEnabled)
+                                  nextButtonIsEnabled: nextButtonIsEnabled,
+                                  buttonType: .disabled(text: "Submit"))
     }
     
     enum Action {
@@ -44,6 +45,7 @@ final class QuestionReactor: Reactor {
         case setPreviousButtonIsEnabled(enabled: Bool)
         case setNextButtonIsEnabled(enabled: Bool)
         case setSubmittedQuestions(submittedQuestions: String)
+        case setButtonType(buttonType: ButtonType)
     }
     
     func mutate(action: QuestionReactor.Action) -> Observable<QuestionReactor.Mutation> {
@@ -55,7 +57,8 @@ final class QuestionReactor: Reactor {
                     Observable.just(Mutation.setName(name: question.name)),
                     Observable.just(Mutation.setSubmittedQuestions(submittedQuestions: question.submittedQuestions)),
                     Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: question.previousEnabled)),
-                    Observable.just(Mutation.setNextButtonIsEnabled(enabled: question.nextEnabled))
+                    Observable.just(Mutation.setNextButtonIsEnabled(enabled: question.nextEnabled)),
+                    Observable.just(Mutation.setButtonType(buttonType: question.buttonType))
                 ])
             }
         }
@@ -75,6 +78,8 @@ final class QuestionReactor: Reactor {
             state.previousButtonIsEnabled = enabled
         case .setNextButtonIsEnabled(enabled: let enabled):
             state.nextButtonIsEnabled = enabled
+        case .setButtonType(buttonType: let buttonType):
+            state.buttonType = buttonType
         }
         return state
     }
@@ -85,5 +90,6 @@ final class QuestionReactor: Reactor {
         var submittedQuestions: String
         var previousButtonIsEnabled: Bool
         var nextButtonIsEnabled: Bool
+        var buttonType: ButtonType
     }
 }

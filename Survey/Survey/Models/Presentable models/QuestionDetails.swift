@@ -14,4 +14,5 @@ struct QuestionDetails: Presentable {
     let previousEnabled: Bool
     let nextEnabled: Bool
     let submittedQuestions: String
+    let buttonType: ButtonType
 }

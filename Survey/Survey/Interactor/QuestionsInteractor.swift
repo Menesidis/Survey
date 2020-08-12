@@ -19,6 +19,7 @@ class QuestionsInteractor: QuestionsInteractorType {
                                                name: "What's your favourite color?",
                                                previousEnabled: false,
                                                nextEnabled: true,
-                                               submittedQuestions: "Questions submitted: 0"))
+                                               submittedQuestions: "Questions submitted: 0",
+                                               buttonType: .disabled(text: "Submit")))
     }
 }
