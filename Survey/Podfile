@@ -6,7 +6,7 @@ target 'Survey' do
   use_frameworks!
 
   pod 'ReactorKit'
-  pod 'RxSwift', '4.5.0'
+  pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Moya/RxSwift'
 
