@@ -17,6 +17,11 @@ class QuestionViewController: UIViewController {
     lazy var nextBarButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: nil)
     var disposeBag = DisposeBag()
     
+    @IBOutlet weak var submittedQuestionsLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var answerTextField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
+    
     init(reactor: QuestionReactor) {
         print("♻️🆕 \(#file): \(#function)")
 
@@ -34,6 +39,29 @@ class QuestionViewController: UIViewController {
     }
     
     private func setupView() {
+        //TODO: Add Scroll view????
+        
+        answerTextField.textColor = .lightGray
+        answerTextField.placeholder = "Type here for an answer..."
+        answerTextField.font = UIFont.preferredFont(forTextStyle: .title2)
+        answerTextField.adjustsFontForContentSizeCategory = true
+        
+        nameLabel.textColor = .black
+        nameLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        nameLabel.adjustsFontForContentSizeCategory = true
+        
+        submittedQuestionsLabel.textColor = .black
+        submittedQuestionsLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        submittedQuestionsLabel.adjustsFontForContentSizeCategory = true
+        submittedQuestionsLabel.backgroundColor = .white
+        
+        submitButton.setTitle("Submit", for: .normal)
+        submitButton.backgroundColor = .white
+        submitButton.setTitleColor(.blue, for: .normal)
+        submitButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
+        submitButton.titleLabel?.adjustsFontForContentSizeCategory = true
+        submitButton.rounded(cornerRadius: 15.0, borderColor: .blue, borderWidth: 0.5)
+        
         previousBarButton.tintColor = .blue
         nextBarButton.tintColor = .blue
         navigationItem.rightBarButtonItems = [nextBarButton, previousBarButton]
@@ -71,6 +99,18 @@ extension QuestionViewController: StoryboardView {
             .map {$0.title}
             .distinctUntilChanged()
             .drive(rx.title)
+            .disposed(by: disposeBag)
+        
+        reactorDriver
+            .map {$0.name}
+            .distinctUntilChanged()
+            .drive(nameLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactorDriver
+            .map {$0.submittedQuestions}
+            .distinctUntilChanged()
+            .drive(submittedQuestionsLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }

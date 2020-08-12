@@ -9,6 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionViewController" customModule="Survey" customModuleProvider="target">
             <connections>
+                <outlet property="answerTextField" destination="hWA-l5-Cfv" id="nlD-wQ-1h8"/>
+                <outlet property="nameLabel" destination="o22-ma-Pdg" id="zY5-mG-h4q"/>
+                <outlet property="submitButton" destination="UMZ-Qv-cnM" id="fDU-q2-bqc"/>
+                <outlet property="submittedQuestionsLabel" destination="L1S-VJ-v6T" id="Uc1-Tl-bEX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,9 +20,52 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1S-VJ-v6T">
+                    <rect key="frame" x="10" y="64" width="394" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="pkS-IV-oH5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o22-ma-Pdg">
+                    <rect key="frame" x="10" y="134" width="394" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-l5-Cfv">
+                    <rect key="frame" x="10" y="230" width="394" height="16"/>
+                    <nil key="textColor"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMZ-Qv-cnM">
+                    <rect key="frame" x="40" y="326" width="334" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="nE7-HH-uUp"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
             <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="o22-ma-Pdg" firstAttribute="leading" secondItem="L1S-VJ-v6T" secondAttribute="leading" id="0cL-PA-I78"/>
+                <constraint firstItem="o22-ma-Pdg" firstAttribute="trailing" secondItem="L1S-VJ-v6T" secondAttribute="trailing" id="16h-w2-Obv"/>
+                <constraint firstItem="hWA-l5-Cfv" firstAttribute="trailing" secondItem="o22-ma-Pdg" secondAttribute="trailing" id="1G3-q9-BD5"/>
+                <constraint firstItem="hWA-l5-Cfv" firstAttribute="leading" secondItem="o22-ma-Pdg" secondAttribute="leading" id="5Fy-bc-fJZ"/>
+                <constraint firstItem="L1S-VJ-v6T" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="8o9-Cm-n2x"/>
+                <constraint firstItem="UMZ-Qv-cnM" firstAttribute="top" secondItem="hWA-l5-Cfv" secondAttribute="bottom" constant="80" id="984-O2-uaB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L1S-VJ-v6T" secondAttribute="trailing" constant="10" id="JMe-Md-gwi"/>
+                <constraint firstItem="hWA-l5-Cfv" firstAttribute="top" secondItem="o22-ma-Pdg" secondAttribute="bottom" constant="75.5" id="Lrh-9V-MsA"/>
+                <constraint firstItem="L1S-VJ-v6T" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="R2D-Hi-aIj"/>
+                <constraint firstItem="o22-ma-Pdg" firstAttribute="top" secondItem="L1S-VJ-v6T" secondAttribute="bottom" constant="20" id="UVy-Tq-Nax"/>
+                <constraint firstItem="UMZ-Qv-cnM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="dNs-vM-NU9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UMZ-Qv-cnM" secondAttribute="trailing" constant="40" id="lM3-nM-OGP"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="91"/>
+            <point key="canvasLocation" x="137.68115942028987" y="90.401785714285708"/>
         </view>
     </objects>
 </document>
