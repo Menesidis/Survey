@@ -19,8 +19,19 @@ final class QuestionReactor: Reactor {
         print("♻️🚮 \(#file): \(#function)")
     }
 
-    init(title: String = "Question -/-", previousButtonIsEnabled: Bool = false, nextButtonIsEnabled: Bool = true) {
-        self.initialState = State(title: title, previousButtonIsEnabled: previousButtonIsEnabled, nextButtonIsEnabled: nextButtonIsEnabled)
+    init(title: String = "Question -/-",
+         name: String = "-",
+         submittedQuestions: String = "-",
+         previousButtonIsEnabled: Bool = false,
+         nextButtonIsEnabled: Bool = true,
+         interactor: QuestionsInteractorType) {
+        
+        self.interactor = interactor
+        self.initialState = State(title: title,
+                                  name: name,
+                                  submittedQuestions: submittedQuestions,
+                                  previousButtonIsEnabled: previousButtonIsEnabled,
+                                  nextButtonIsEnabled: nextButtonIsEnabled)
     }
     
     enum Action {
@@ -28,11 +39,50 @@ final class QuestionReactor: Reactor {
     }
 
     enum Mutation {
-        case testt
+        case setTitle(title: String)
+        case setName(name: String)
+        case setPreviousButtonIsEnabled(enabled: Bool)
+        case setNextButtonIsEnabled(enabled: Bool)
+        case setSubmittedQuestions(submittedQuestions: String)
+    }
+    
+    func mutate(action: QuestionReactor.Action) -> Observable<QuestionReactor.Mutation> {
+        switch action {
+        case .load:
+            return interactor.load().flatMapLatest { question in
+                return Observable.concat([
+                    Observable.just(Mutation.setTitle(title: question.title)),
+                    Observable.just(Mutation.setName(name: question.name)),
+                    Observable.just(Mutation.setSubmittedQuestions(submittedQuestions: question.submittedQuestions)),
+                    Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: question.previousEnabled)),
+                    Observable.just(Mutation.setNextButtonIsEnabled(enabled: question.nextEnabled))
+                ])
+            }
+        }
+    }
+    
+    func reduce(state: QuestionReactor.State, mutation: QuestionReactor.Mutation) -> QuestionReactor.State {
+        var state = state
+        
+        switch mutation {
+        case .setTitle(title: let title):
+            state.title = title
+        case .setName(name: let name):
+            state.name = name
+        case .setSubmittedQuestions(submittedQuestions: let submittedQuestions):
+            state.submittedQuestions = submittedQuestions
+        case .setPreviousButtonIsEnabled(enabled: let enabled):
+            state.previousButtonIsEnabled = enabled
+        case .setNextButtonIsEnabled(enabled: let enabled):
+            state.nextButtonIsEnabled = enabled
+        }
+        return state
     }
     
     struct State {
         var title: String
+        var name: String
+        var submittedQuestions: String
         var previousButtonIsEnabled: Bool
         var nextButtonIsEnabled: Bool
     }
