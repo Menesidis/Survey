@@ -11,4 +11,7 @@ import Foundation
 struct QuestionDetails: Presentable {
     let title: String
     let name: String
+    let previousEnabled: Bool
+    let nextEnabled: Bool
+    let submittedQuestions: String
 }

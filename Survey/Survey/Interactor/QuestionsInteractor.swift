@@ -15,6 +15,10 @@ protocol QuestionsInteractorType: InteractorType {
 
 class QuestionsInteractor: QuestionsInteractorType {
     func load() -> Observable<QuestionDetails> {
-        return Observable.just(QuestionDetails(title: "Question 1/20", name: "What's your favourite color?"))
+        return Observable.just(QuestionDetails(title: "Question 1/20",
+                                               name: "What's your favourite color?",
+                                               previousEnabled: false,
+                                               nextEnabled: true,
+                                               submittedQuestions: "Questions submitted: 0"))
     }
 }
