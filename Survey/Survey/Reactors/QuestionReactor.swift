@@ -41,6 +41,7 @@ final class QuestionReactor: Reactor {
         case next
         case previous
         case updateAnswer(answer: String)
+        case submit
     }
 
     enum Mutation {
@@ -76,6 +77,12 @@ final class QuestionReactor: Reactor {
         case .updateAnswer(answer: let answer):
             return interactor
                 .updateAnswer(answer: answer)
+                .flatMapLatest { questionDetails in
+                    return self.updateUI(questionDetails: questionDetails)
+            }
+        case .submit:
+            return interactor
+                .submit()
                 .flatMapLatest { questionDetails in
                     return self.updateUI(questionDetails: questionDetails)
             }

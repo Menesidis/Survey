@@ -106,6 +106,13 @@ extension QuestionViewController: StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        submitButton
+             .rx
+             .tap
+             .map {Reactor.Action.submit}
+             .bind(to: reactor.action)
+             .disposed(by: disposeBag)
+        
         // MARK: States
         let reactorDriver = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
         
