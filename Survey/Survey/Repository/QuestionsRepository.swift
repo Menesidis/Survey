@@ -18,7 +18,8 @@ protocol QuestionsRepositoryType: RepositoryType {
 class QuestionsRepository: QuestionsRepositoryType {
 
     private let client: HTTPClient
-
+    private var questionsObservable: Observable<[Question]>?
+    
     deinit {
         print("♻️🚮 \(#file): \(#function)")
     }
@@ -35,10 +36,17 @@ class QuestionsRepository: QuestionsRepositoryType {
                              errorType: AnswerErrorResponse.self)
     }
     
+    //TODO: Should I replace  .concat(Observable.never())???
     func questions() -> Observable<[Question]> {
-        return requestCollection(client: client,
-                             target: QuestionTarget.questions,
-                             responseType: [QuestionResponse].self,
-                             errorType: QuestionErrorResponse.self)
+        guard let questions = questionsObservable else {
+            questionsObservable = requestCollection(client: client,
+                                                    target: QuestionTarget.questions,
+                                                    responseType: [QuestionResponse].self,
+                                                    errorType: QuestionErrorResponse.self)
+                .concat(Observable.never())
+                .share(replay: 1, scope: .whileConnected)
+            return questionsObservable!
+        }
+        return questions
     }
 }
