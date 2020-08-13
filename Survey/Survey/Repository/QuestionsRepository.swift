@@ -12,6 +12,7 @@ import RxSwift
 
 protocol QuestionsRepositoryType: RepositoryType {
     func questions() -> Observable<[Question]>
+    func submit(request: AnswerRequest) -> Observable<Bool>
 }
 
 class QuestionsRepository: QuestionsRepositoryType {
@@ -27,6 +28,13 @@ class QuestionsRepository: QuestionsRepositoryType {
         self.client = httpClient
     }
 
+    func submit(request: AnswerRequest) -> Observable<Bool> {
+        return requestSingle(client: client,
+                             target: QuestionTarget.submit(request: request),
+                             responseType: AnswerResponse.self,
+                             errorType: AnswerErrorResponse.self)
+    }
+    
     func questions() -> Observable<[Question]> {
         return requestCollection(client: client,
                              target: QuestionTarget.questions,

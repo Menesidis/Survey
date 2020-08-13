@@ -11,7 +11,7 @@ import Moya
 
 enum QuestionTarget {
     case questions
-    case submit(parameters: [String: Any])
+    case submit(request: AnswerRequest)
 }
 
 extension QuestionTarget: TargetType {
@@ -42,8 +42,8 @@ extension QuestionTarget: TargetType {
         switch self {
         case .questions:
             return .requestPlain
-        case .submit(parameters: let parameters):
-            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .submit(request: let request):
+            return .requestParameters(parameters: request.parameters, encoding: URLEncoding.default)
         }
     }
 
