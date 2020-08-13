@@ -32,13 +32,15 @@ final class QuestionReactor: Reactor {
                                   submittedQuestions: submittedQuestions,
                                   previousButtonIsEnabled: previousButtonIsEnabled,
                                   nextButtonIsEnabled: nextButtonIsEnabled,
-                                  buttonType: .disabled(text: "Submit"))
+                                  buttonType: .disabled(text: "Submit"),
+                                  answeredText: "")
     }
     
     enum Action {
         case load
         case next
         case previous
+        case updateAnswer(answer: String)
     }
 
     enum Mutation {
@@ -48,6 +50,7 @@ final class QuestionReactor: Reactor {
         case setNextButtonIsEnabled(enabled: Bool)
         case setSubmittedQuestions(submittedQuestions: String)
         case setButtonType(buttonType: ButtonType)
+        case setAnswerText(answerText: String)
     }
     
     func mutate(action: QuestionReactor.Action) -> Observable<QuestionReactor.Mutation> {
@@ -70,6 +73,12 @@ final class QuestionReactor: Reactor {
                 .flatMapLatest { questionDetails in
                     return self.updateUI(questionDetails: questionDetails)
             }
+        case .updateAnswer(answer: let answer):
+            return interactor
+                .updateAnswer(answer: answer)
+                .flatMapLatest { questionDetails in
+                    return self.updateUI(questionDetails: questionDetails)
+            }
         }
     }
     
@@ -89,6 +98,8 @@ final class QuestionReactor: Reactor {
             state.nextButtonIsEnabled = enabled
         case .setButtonType(buttonType: let buttonType):
             state.buttonType = buttonType
+        case .setAnswerText(answerText: let text):
+            state.answeredText = text
         }
         return state
     }
@@ -100,6 +111,7 @@ final class QuestionReactor: Reactor {
         var previousButtonIsEnabled: Bool
         var nextButtonIsEnabled: Bool
         var buttonType: ButtonType
+        var answeredText: String
     }
     
     private func updateUI(questionDetails: QuestionDetails) -> Observable<QuestionReactor.Mutation> {
@@ -109,6 +121,7 @@ final class QuestionReactor: Reactor {
             Observable.just(Mutation.setSubmittedQuestions(submittedQuestions: questionDetails.submittedQuestions)),
             Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: questionDetails.previousEnabled)),
             Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
+            Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
             Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType))
         ])
     }

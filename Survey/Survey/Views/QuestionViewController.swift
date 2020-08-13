@@ -41,6 +41,7 @@ class QuestionViewController: UIViewController {
     private func setupView() {
         //TODO: Add Scroll view????
         
+        answerTextField.delegate = self
         answerTextField.textColor = .lightGray
         answerTextField.placeholder = "Type here for an answer..."
         answerTextField.font = UIFont.preferredFont(forTextStyle: .title2)
@@ -61,6 +62,13 @@ class QuestionViewController: UIViewController {
         
         navigationItem.rightBarButtonItems = [nextBarButton, previousBarButton]
         view.backgroundColor = .gray
+    }
+}
+
+extension QuestionViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
     }
 }
 
@@ -89,6 +97,14 @@ extension QuestionViewController: StoryboardView {
              .map {Reactor.Action.previous}
              .bind(to: reactor.action)
              .disposed(by: disposeBag)
+                
+        answerTextField
+            .rx
+            .controlEvent(.editingChanged)
+            .withLatestFrom(answerTextField.rx.text.orEmpty)
+            .map { Reactor.Action.updateAnswer(answer: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
         // MARK: States
         let reactorDriver = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
@@ -127,5 +143,17 @@ extension QuestionViewController: StoryboardView {
             .map {$0.buttonType}
             .drive(submitButton.rx.buttonType)
             .disposed(by: disposeBag)
+        
+        reactorDriver
+            .map {$0.answeredText}
+            .distinctUntilChanged()
+            .drive(answerTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+        
+        //TODO: Close textfield before performing submit request
+        //TODO: Clear textfield during next or previous
+        //TODO: Renaming!!!!
+        //TODO: Validate everything again & business logic
     }
 }

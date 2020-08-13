@@ -13,6 +13,7 @@ protocol QuestionsInteractorType: InteractorType {
     func load(page: Int) -> Observable<QuestionDetails>
     func next() -> Observable<QuestionDetails>
     func previous() -> Observable<QuestionDetails>
+    func updateAnswer(answer: String) -> Observable<QuestionDetails>
 }
 
 extension QuestionsInteractorType {
