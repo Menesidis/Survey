@@ -17,7 +17,11 @@ struct HTTPClient {
     
     let provider: MoyaProvider<MultiTarget>
     
-    init(provider: MoyaProvider<MultiTarget> = MoyaProvider<MultiTarget>(plugins: [])) {
+    init(provider: MoyaProvider<MultiTarget> = MoyaProvider<MultiTarget>(plugins:[
+        ResponseModifierPlugin(),
+        NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration.init(formatter: NetworkLoggerPlugin.Configuration.Formatter.init(),logOptions: .verbose))
+    ]))
+    {
         self.provider = provider
     }
     

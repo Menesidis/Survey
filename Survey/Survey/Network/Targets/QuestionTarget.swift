@@ -59,3 +59,18 @@ extension QuestionTarget: TargetType {
         return Data()
     }
 }
+
+extension QuestionTarget: Modifiable {
+    func convertInputValue(input: String, statusCode: Int) -> String? {
+        switch self {
+        case .submit:
+            if input == "" {
+                let isSucessful = statusCode == 200
+                return "{\"isSuccessful\": \(isSucessful)}"
+            }
+            return nil
+        default:
+            return nil
+        }
+    }
+}

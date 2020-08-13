@@ -35,6 +35,9 @@
 		1916F0E624E3E03C0024FF79 /* QuestionTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0E524E3E03C0024FF79 /* QuestionTarget.swift */; };
 		1916F0E824E401F00024FF79 /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0E724E401F00024FF79 /* EntityType.swift */; };
 		1916F0EA24E402440024FF79 /* QuestionsEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0E924E402440024FF79 /* QuestionsEntities.swift */; };
+		1916F0EE24E527F80024FF79 /* AnswerEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0ED24E527F80024FF79 /* AnswerEntities.swift */; };
+		1916F0F424E52F480024FF79 /* ResponseModifierPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0F324E52F480024FF79 /* ResponseModifierPlugin.swift */; };
+		1916F0F624E56B7B0024FF79 /* Modifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0F524E56B7B0024FF79 /* Modifiable.swift */; };
 		C0B7A228FB980B06DCF0DD63 /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */; };
 		CE448228482A46D63BE6B269 /* Pods_Survey_SurveyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +94,9 @@
 		1916F0E524E3E03C0024FF79 /* QuestionTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTarget.swift; sourceTree = "<group>"; };
 		1916F0E724E401F00024FF79 /* EntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
 		1916F0E924E402440024FF79 /* QuestionsEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsEntities.swift; sourceTree = "<group>"; };
+		1916F0ED24E527F80024FF79 /* AnswerEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerEntities.swift; sourceTree = "<group>"; };
+		1916F0F324E52F480024FF79 /* ResponseModifierPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModifierPlugin.swift; sourceTree = "<group>"; };
+		1916F0F524E56B7B0024FF79 /* Modifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiable.swift; sourceTree = "<group>"; };
 		2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77319F7CC60B77363C36276B /* Pods-Survey-SurveyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey-SurveyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Survey-SurveyUITests/Pods-Survey-SurveyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey_SurveyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,6 +283,8 @@
 				1916F0E324E3D69F0024FF79 /* Entities */,
 				1916F0E424E3DFFB0024FF79 /* Targets */,
 				1916F0E124E3D6460024FF79 /* HTTPClient.swift */,
+				1916F0F324E52F480024FF79 /* ResponseModifierPlugin.swift */,
+				1916F0F524E56B7B0024FF79 /* Modifiable.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -286,6 +294,7 @@
 			children = (
 				1916F0E724E401F00024FF79 /* EntityType.swift */,
 				1916F0E924E402440024FF79 /* QuestionsEntities.swift */,
+				1916F0ED24E527F80024FF79 /* AnswerEntities.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -572,9 +581,12 @@
 				1916F0DD24E3D51E0024FF79 /* QuestionsRepository.swift in Sources */,
 				1916F0C224E2D2B30024FF79 /* QuestionViewController.swift in Sources */,
 				1916F0D224E2F4190024FF79 /* Presentable.swift in Sources */,
+				1916F0F624E56B7B0024FF79 /* Modifiable.swift in Sources */,
 				1916F0EA24E402440024FF79 /* QuestionsEntities.swift in Sources */,
 				1916F0BB24E2C4DC0024FF79 /* LandingViewController.swift in Sources */,
 				1916F0CE24E2EF5C0024FF79 /* Question.swift in Sources */,
+				1916F0EE24E527F80024FF79 /* AnswerEntities.swift in Sources */,
+				1916F0F424E52F480024FF79 /* ResponseModifierPlugin.swift in Sources */,
 				1916F08024E2BF010024FF79 /* AppDelegate.swift in Sources */,
 				1916F0DA24E3BDD50024FF79 /* ButtonType.swift in Sources */,
 				1916F0E624E3E03C0024FF79 /* QuestionTarget.swift in Sources */,
