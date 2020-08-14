@@ -165,10 +165,55 @@ extension QuestionViewController: StoryboardView {
             .drive(answerTextField.rx.text)
             .disposed(by: disposeBag)
         
+        reactorDriver
+            .debounce(.milliseconds(2000)) // Ignore consecutive states for 2 sec
+            .map {$0.notificationState}
+            .drive(onNext: { [unowned self] state in
+                
+                switch state {
+                case .failed:
+                    self.resultLabel.text = "Failed"
+                    self.resultLabel.isHidden = false
+                    self.retryButton.isHidden = false
+                    self.animateNotificationView(state: state)
+                    
+                case .sucessful:
+                    self.resultLabel.text = "sucessful"
+                    self.resultLabel.isHidden = false
+                    self.retryButton.isHidden = true
+                    self.animateNotificationView(state: state)
+                    
+                case .none:
+                    self.resultLabel.isHidden = true
+                    self.retryButton.isHidden = true
+                    self.notificationView.isHidden = true
+                }
+            })
+            .disposed(by: disposeBag)
         
         //TODO: Close textfield before performing submit request
         //TODO: Clear textfield during next or previous
         //TODO: Renaming!!!!
         //TODO: Validate everything again & business logic
+    }
+    
+    private func animateNotificationView(state: NotificationState) {
+        
+        // Fade in animation
+        self.notificationView.alpha = 0.0
+        self.notificationView.isHidden = state.isHidden
+        self.notificationView.backgroundColor = state.backgroundColor
+        
+        self.notificationView.fadeIn { [unowned self] _ in
+            self.view.bringSubviewToFront(self.notificationView)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                // Fade out animation
+                self.notificationView.fadeOut() { [unowned self] _ in
+                    self.notificationView.isHidden = !state.isHidden
+                }
+                
+            }
+        }
     }
 }

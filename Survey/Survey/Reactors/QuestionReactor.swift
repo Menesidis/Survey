@@ -33,7 +33,8 @@ final class QuestionReactor: Reactor {
                                   previousButtonIsEnabled: previousButtonIsEnabled,
                                   nextButtonIsEnabled: nextButtonIsEnabled,
                                   buttonType: .disabled(text: "Submit"),
-                                  answeredText: "")
+                                  answeredText: "",
+                                  notificationState: .none)
     }
     
     enum Action {
@@ -52,6 +53,7 @@ final class QuestionReactor: Reactor {
         case setSubmittedQuestions(submittedQuestions: String)
         case setButtonType(buttonType: ButtonType)
         case setAnswerText(answerText: String)
+        case setNotificationState(notificationState: NotificationState)
     }
     
     func mutate(action: QuestionReactor.Action) -> Observable<QuestionReactor.Mutation> {
@@ -107,6 +109,8 @@ final class QuestionReactor: Reactor {
             state.buttonType = buttonType
         case .setAnswerText(answerText: let text):
             state.answeredText = text
+        case .setNotificationState(notificationState: let notificationState):
+            state.notificationState = notificationState
         }
         return state
     }
@@ -119,6 +123,7 @@ final class QuestionReactor: Reactor {
         var nextButtonIsEnabled: Bool
         var buttonType: ButtonType
         var answeredText: String
+        var notificationState: NotificationState
     }
     
     private func updateUI(questionDetails: QuestionDetails) -> Observable<QuestionReactor.Mutation> {
@@ -129,7 +134,8 @@ final class QuestionReactor: Reactor {
             Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: questionDetails.previousEnabled)),
             Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
             Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
-            Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType))
+            Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
+            Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
         ])
     }
 }
