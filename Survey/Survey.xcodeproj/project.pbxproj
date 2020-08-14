@@ -38,6 +38,7 @@
 		1916F0EE24E527F80024FF79 /* AnswerEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0ED24E527F80024FF79 /* AnswerEntities.swift */; };
 		1916F0F424E52F480024FF79 /* ResponseModifierPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0F324E52F480024FF79 /* ResponseModifierPlugin.swift */; };
 		1916F0F624E56B7B0024FF79 /* Modifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0F524E56B7B0024FF79 /* Modifiable.swift */; };
+		1916F0F824E5A1E60024FF79 /* NotificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0F724E5A1E60024FF79 /* NotificationState.swift */; };
 		C0B7A228FB980B06DCF0DD63 /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */; };
 		CE448228482A46D63BE6B269 /* Pods_Survey_SurveyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		1916F0ED24E527F80024FF79 /* AnswerEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerEntities.swift; sourceTree = "<group>"; };
 		1916F0F324E52F480024FF79 /* ResponseModifierPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModifierPlugin.swift; sourceTree = "<group>"; };
 		1916F0F524E56B7B0024FF79 /* Modifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiable.swift; sourceTree = "<group>"; };
+		1916F0F724E5A1E60024FF79 /* NotificationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationState.swift; sourceTree = "<group>"; };
 		2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77319F7CC60B77363C36276B /* Pods-Survey-SurveyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey-SurveyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Survey-SurveyUITests/Pods-Survey-SurveyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey_SurveyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +222,7 @@
 			children = (
 				1916F0BE24E2D0400024FF79 /* UIViewAdditions.swift */,
 				1916F0D924E3BDD50024FF79 /* ButtonType.swift */,
+				1916F0F724E5A1E60024FF79 /* NotificationState.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				1916F0DD24E3D51E0024FF79 /* QuestionsRepository.swift in Sources */,
 				1916F0C224E2D2B30024FF79 /* QuestionViewController.swift in Sources */,
 				1916F0D224E2F4190024FF79 /* Presentable.swift in Sources */,
+				1916F0F824E5A1E60024FF79 /* NotificationState.swift in Sources */,
 				1916F0F624E56B7B0024FF79 /* Modifiable.swift in Sources */,
 				1916F0EA24E402440024FF79 /* QuestionsEntities.swift in Sources */,
 				1916F0BB24E2C4DC0024FF79 /* LandingViewController.swift in Sources */,

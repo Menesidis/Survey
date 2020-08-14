@@ -16,4 +16,5 @@ struct QuestionDetails: Presentable {
     let submittedQuestions: String
     let buttonType: ButtonType
     let answeredQuestion: String
+    let notificationState: NotificationState
 }
