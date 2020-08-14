@@ -11,42 +11,42 @@ import RxSwift
 import RxCocoa
 
 enum ButtonType {
-    case submit(text: String)
-    case submitted(text: String)
-    case disabled(text: String)
+    case submitEnabled
+    case submitDisabled
+    case submitted
 }
 
 extension ButtonType {
     
     var backgroundColor: UIColor {
         switch self {
-        case .submit:
+        case .submitEnabled:
             return .white
         case .submitted:
             return .lightGray
-        case .disabled:
+        case .submitDisabled:
             return .lightGray
         }
     }
 
     var text: String {
         switch self {
-        case .submit(text: let text):
-            return text
-        case .submitted(text: let text):
-            return text
-        case .disabled(text: let text):
-            return text
+        case .submitEnabled:
+            return "Submit"
+        case .submitted:
+            return "Already submited!"
+        case .submitDisabled:
+            return "Submit"
         }
     }
     
     var isEnabled: Bool {
         switch self {
-        case .submit:
+        case .submitEnabled:
             return true
         case .submitted:
             return false
-        case .disabled:
+        case .submitDisabled:
             return false
         }
     }

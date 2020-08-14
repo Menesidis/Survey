@@ -63,7 +63,6 @@ class QuestionsInteractor: QuestionsInteractorType {
     }
     
     func submit() -> Observable<QuestionDetails> {
-        
         guard let answer = currentAnswer else { return Observable.empty() }
         let request = AnswerRequest(page: currentPage, answer: answer)
                 
@@ -85,28 +84,28 @@ class QuestionsInteractor: QuestionsInteractorType {
         
         return Observable.combineLatest(totalPagesObservable, questionsObservable)
             .flatMap { [unowned self] totalPages, questions -> Observable<QuestionDetails> in
-
+                
                 // Set variables
                 self.totalPages = totalPages
                 self.currentPage = page
-               
+                
                 let buttonType: ButtonType
                 let answeredQuestion: String
-                
                 if let answered = self.submittedQuestions[page] {
-                    buttonType = .submitted(text: "Already submited!")
+                    buttonType = .submitted
                     answeredQuestion = answered
                 } else if let answer = answer, answer.count > 0 {
-                    buttonType = .submit(text: "Submit")
+                    buttonType = .submitEnabled
                     answeredQuestion = ""
                 } else {
-                    buttonType = .disabled(text: "Submit")
+                    buttonType = .submitDisabled
                     answeredQuestion = ""
                 }
                 
                 let questionDetails = questions
                     .filter { $0.identifier == page }
-                    .first.map {
+                    .first
+                    .map {
                         QuestionDetails(title: "Question \(page)/\(totalPages)",
                             name: $0.name,
                             previousEnabled: (page > 1 && page <= totalPages),
@@ -116,7 +115,6 @@ class QuestionsInteractor: QuestionsInteractorType {
                             answeredQuestion: answeredQuestion,
                             notificationState: notificationState)
                 }
-                
                 guard let details = questionDetails else { return Observable.empty() }
                 return Observable.just(details)
         }

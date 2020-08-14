@@ -32,7 +32,7 @@ final class QuestionReactor: Reactor {
                                   submittedQuestions: submittedQuestions,
                                   previousButtonIsEnabled: previousButtonIsEnabled,
                                   nextButtonIsEnabled: nextButtonIsEnabled,
-                                  buttonType: .disabled(text: "Submit"),
+                                  buttonType: .submitDisabled,
                                   answeredText: "",
                                   notificationState: .none)
     }
