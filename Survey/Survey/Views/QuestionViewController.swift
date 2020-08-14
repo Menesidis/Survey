@@ -71,6 +71,14 @@ class QuestionViewController: UIViewController {
         navigationItem.rightBarButtonItems = [nextBarButton, previousBarButton]
         view.backgroundColor = .gray
     }
+    
+    private func clearTextField() {
+        answerTextField.text?.removeAll()
+    }
+    
+    private func closeTextField() {
+        answerTextField.resignFirstResponder()
+    }
 }
 
 extension QuestionViewController: UITextFieldDelegate {
@@ -92,20 +100,28 @@ extension QuestionViewController: StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-       nextBarButton
+        nextBarButton
             .rx
             .tap
-            .map {Reactor.Action.next}
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+            .map { [unowned self] _ in
+                self.clearTextField()
+                self.closeTextField()
+                return Reactor.Action.next
+        }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
         
         previousBarButton
-             .rx
-             .tap
-             .map {Reactor.Action.previous}
-             .bind(to: reactor.action)
-             .disposed(by: disposeBag)
-                
+            .rx
+            .tap
+            .map { [unowned self] _ in
+                self.clearTextField()
+                self.closeTextField()
+                return Reactor.Action.previous
+        }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
+        
         answerTextField
             .rx
             .controlEvent(.editingChanged)
@@ -114,12 +130,28 @@ extension QuestionViewController: StoryboardView {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        retryButton
+            .rx
+            .tap
+            .throttle(.milliseconds(2000), scheduler: MainScheduler.instance) //emits only the first item emitted by the source observable in the time window
+            .map { [unowned self] _ in
+                self.closeTextField()
+                return Reactor.Action.submit
+        }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
+        
+        
         submitButton
-             .rx
-             .tap
-             .map {Reactor.Action.submit}
-             .bind(to: reactor.action)
-             .disposed(by: disposeBag)
+            .rx
+            .tap
+            .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
+            .map { [unowned self] _ in
+                self.closeTextField()
+                return Reactor.Action.submit
+        }
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
         
         // MARK: States
         let reactorDriver = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
