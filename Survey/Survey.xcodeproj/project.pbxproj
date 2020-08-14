@@ -12,7 +12,6 @@
 		1916F08724E2BF010024FF79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1916F08524E2BF010024FF79 /* Main.storyboard */; };
 		1916F08924E2BF010024FF79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1916F08824E2BF010024FF79 /* Assets.xcassets */; };
 		1916F08C24E2BF010024FF79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1916F08A24E2BF010024FF79 /* LaunchScreen.storyboard */; };
-		1916F09724E2BF020024FF79 /* SurveyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F09624E2BF020024FF79 /* SurveyTests.swift */; };
 		1916F0A224E2BF020024FF79 /* SurveyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0A124E2BF020024FF79 /* SurveyUITests.swift */; };
 		1916F0B124E2C1B10024FF79 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0B024E2C1B10024FF79 /* Coordinator.swift */; };
 		1916F0B324E2C1F90024FF79 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0B224E2C1F90024FF79 /* AppCoordinator.swift */; };
@@ -40,6 +39,8 @@
 		1916F0F624E56B7B0024FF79 /* Modifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0F524E56B7B0024FF79 /* Modifiable.swift */; };
 		1916F0F824E5A1E60024FF79 /* NotificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0F724E5A1E60024FF79 /* NotificationState.swift */; };
 		1916F0FA24E6B2EA0024FF79 /* StringAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0F924E6B2EA0024FF79 /* StringAdditions.swift */; };
+		1916F0FC24E6BB7E0024FF79 /* QuestionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0FB24E6BB7E0024FF79 /* QuestionInteractorTests.swift */; };
+		1916F0FE24E6DB6F0024FF79 /* QuestionReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0FD24E6DB6F0024FF79 /* QuestionReactorTests.swift */; };
 		C0B7A228FB980B06DCF0DD63 /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */; };
 		CE448228482A46D63BE6B269 /* Pods_Survey_SurveyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -70,7 +71,6 @@
 		1916F08B24E2BF010024FF79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1916F08D24E2BF010024FF79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1916F09224E2BF020024FF79 /* SurveyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurveyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1916F09624E2BF020024FF79 /* SurveyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTests.swift; sourceTree = "<group>"; };
 		1916F09824E2BF020024FF79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1916F09D24E2BF020024FF79 /* SurveyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SurveyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1916F0A124E2BF020024FF79 /* SurveyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyUITests.swift; sourceTree = "<group>"; };
@@ -101,6 +101,8 @@
 		1916F0F524E56B7B0024FF79 /* Modifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiable.swift; sourceTree = "<group>"; };
 		1916F0F724E5A1E60024FF79 /* NotificationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationState.swift; sourceTree = "<group>"; };
 		1916F0F924E6B2EA0024FF79 /* StringAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAdditions.swift; sourceTree = "<group>"; };
+		1916F0FB24E6BB7E0024FF79 /* QuestionInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionInteractorTests.swift; sourceTree = "<group>"; };
+		1916F0FD24E6DB6F0024FF79 /* QuestionReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReactorTests.swift; sourceTree = "<group>"; };
 		2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77319F7CC60B77363C36276B /* Pods-Survey-SurveyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey-SurveyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Survey-SurveyUITests/Pods-Survey-SurveyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey_SurveyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,8 +186,9 @@
 		1916F09524E2BF020024FF79 /* SurveyTests */ = {
 			isa = PBXGroup;
 			children = (
-				1916F09624E2BF020024FF79 /* SurveyTests.swift */,
 				1916F09824E2BF020024FF79 /* Info.plist */,
+				1916F0FB24E6BB7E0024FF79 /* QuestionInteractorTests.swift */,
+				1916F0FD24E6DB6F0024FF79 /* QuestionReactorTests.swift */,
 			);
 			path = SurveyTests;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				1916F08E24E2BF020024FF79 /* Sources */,
 				1916F08F24E2BF020024FF79 /* Frameworks */,
 				1916F09024E2BF020024FF79 /* Resources */,
+				3A2AEC6BA91F64BF67F2A286 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -626,7 +630,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1916F09724E2BF020024FF79 /* SurveyTests.swift in Sources */,
+				1916F0FE24E6DB6F0024FF79 /* QuestionReactorTests.swift in Sources */,
+				1916F0FC24E6BB7E0024FF79 /* QuestionInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
