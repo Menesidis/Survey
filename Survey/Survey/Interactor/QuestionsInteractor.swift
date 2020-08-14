@@ -94,7 +94,7 @@ class QuestionsInteractor: QuestionsInteractorType {
                 if let answered = self.submittedQuestions[page] {
                     buttonType = .submitted
                     answeredQuestion = answered
-                } else if let answer = answer, answer.count > 0 {
+                } else if let answer = answer, answer.isValid {
                     buttonType = .submitEnabled
                     answeredQuestion = ""
                 } else {
@@ -108,8 +108,8 @@ class QuestionsInteractor: QuestionsInteractorType {
                     .map {
                         QuestionDetails(title: "Question \(page)/\(totalPages)",
                             name: $0.name,
-                            previousEnabled: (page > 1 && page <= totalPages),
-                            nextEnabled: page < totalPages,
+                            previousEnabled: self.previousEnabled(page: page, totalPages: totalPages),
+                            nextEnabled: self.nextEnabled(page: page, totalPages: totalPages),
                             submittedQuestions: "Questions submitted: \(self.submittedQuestions.count)", //TODO: Check self!
                             buttonType: buttonType,
                             answeredQuestion: answeredQuestion,
@@ -118,5 +118,13 @@ class QuestionsInteractor: QuestionsInteractorType {
                 guard let details = questionDetails else { return Observable.empty() }
                 return Observable.just(details)
         }
+    }
+    
+    func previousEnabled(page: Int, totalPages: Int) -> Bool {
+        return page > 1 && page <= totalPages
+    }
+    
+    func nextEnabled(page: Int, totalPages: Int) -> Bool {
+        return page < totalPages
     }
 }
