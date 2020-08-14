@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum ButtonType {
+enum ButtonType: Equatable {
     case submitEnabled
     case submitDisabled
     case submitted

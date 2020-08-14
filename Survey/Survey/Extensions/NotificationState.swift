@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum NotificationState {
+enum NotificationState: Equatable {
     case sucessful
     case failed
     case none
