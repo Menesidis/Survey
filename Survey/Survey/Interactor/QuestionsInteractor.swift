@@ -14,6 +14,7 @@ protocol QuestionsInteractorType: InteractorType {
     func next() -> Observable<QuestionDetails>
     func previous() -> Observable<QuestionDetails>
     func updateAnswer(answer: String) -> Observable<QuestionDetails>
+    func submit() -> Observable<QuestionDetails>
 }
 
 extension QuestionsInteractorType {
@@ -52,6 +53,21 @@ class QuestionsInteractor: QuestionsInteractorType {
             return load(page: currentPage)
         } else {
             return Observable.empty()
+        }
+    }
+    
+    func submit() -> Observable<QuestionDetails> {
+        
+        guard let answer = currentAnswer else { return Observable.empty() }
+        let request = AnswerRequest(page: currentPage, answer: answer)
+                
+        return repository.submit(request: request)
+            .flatMap { [unowned self] isSucessful -> Observable<QuestionDetails> in
+                if isSucessful {
+                    self.submittedQuestions[self.currentPage] = answer
+                }
+                let notificationState: NotificationState = isSucessful ? .sucessful : .failed
+                return self.load(page: self.currentPage, answer: answer, notificationState: notificationState)
         }
     }
     
