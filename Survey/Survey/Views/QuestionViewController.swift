@@ -21,6 +21,9 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var answerTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var notificationView: UIView!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var retryButton: UIButton!
     
     init(reactor: QuestionReactor) {
         print("♻️🆕 \(#file): \(#function)")
@@ -59,6 +62,11 @@ class QuestionViewController: UIViewController {
         submitButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
         submitButton.titleLabel?.adjustsFontForContentSizeCategory = true
         submitButton.rounded(cornerRadius: 15.0)
+        
+        retryButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
+        retryButton.titleLabel?.adjustsFontForContentSizeCategory = true
+        retryButton.rounded(cornerRadius: 15.0)
+        retryButton.setTitle("Retry", for: .normal)
         
         navigationItem.rightBarButtonItems = [nextBarButton, previousBarButton]
         view.backgroundColor = .gray
