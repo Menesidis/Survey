@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol QuestionsInteractorType: InteractorType {
-    func load(page: Int) -> Observable<QuestionDetails>
+    func load(page: Int, answer: String?, notificationState: NotificationState) -> Observable<QuestionDetails>
     func next() -> Observable<QuestionDetails>
     func previous() -> Observable<QuestionDetails>
     func updateAnswer(answer: String) -> Observable<QuestionDetails>
@@ -18,7 +18,7 @@ protocol QuestionsInteractorType: InteractorType {
 
 extension QuestionsInteractorType {
     func load() -> Observable<QuestionDetails> {
-        return load(page: 1)
+        return load(page: 1, answer: nil, notificationState: .none)
     }
 }
 
@@ -26,6 +26,7 @@ class QuestionsInteractor: QuestionsInteractorType {
     private let repository: QuestionsRepositoryType
     private var currentPage: Int = 0
     private var totalPages: Int = 0
+    private var submittedQuestions = [Int: String]() // Current page & answer text accordingly
     
     deinit {
         print("♻️🚮 \(#file): \(#function)")
@@ -56,7 +57,7 @@ class QuestionsInteractor: QuestionsInteractorType {
     
     //TODO: Check multiple API calls!
     //TODO: Update mapping logic
-    func load(page: Int) -> Observable<QuestionDetails> {
+    func load(page: Int, answer: String? = nil, notificationState: NotificationState = .none) -> Observable<QuestionDetails> {
         let totalPagesObservable = repository.questions().map { $0.count }
         let questionsObservable =  repository.questions()
         
@@ -66,6 +67,20 @@ class QuestionsInteractor: QuestionsInteractorType {
                 // Set variables
                 self.totalPages = totalPages
                 self.currentPage = page
+               
+                let buttonType: ButtonType
+                let answeredQuestion: String
+                
+                if let answered = self.submittedQuestions[page] {
+                    buttonType = .submitted(text: "Already submited!")
+                    answeredQuestion = answered
+                } else if let answer = answer, answer.count > 0 {
+                    buttonType = .submit(text: "Submit")
+                    answeredQuestion = ""
+                } else {
+                    buttonType = .disabled(text: "Submit")
+                    answeredQuestion = ""
+                }
                 
                 let questionDetails = questions
                     .filter { $0.identifier == page }
@@ -74,8 +89,10 @@ class QuestionsInteractor: QuestionsInteractorType {
                             name: $0.name,
                             previousEnabled: (page > 1 && page <= totalPages),
                             nextEnabled: page < totalPages,
-                            submittedQuestions: "Questions submitted: 0",
-                            buttonType: .disabled(text: "Submit"))
+                            submittedQuestions: "Questions submitted: \(self.submittedQuestions.count)", //TODO: Check self!
+                            buttonType: buttonType,
+                            answeredQuestion: answeredQuestion,
+                            notificationState: notificationState)
                 }
                 
                 guard let details = questionDetails else { return Observable.empty() }
