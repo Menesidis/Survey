@@ -27,6 +27,7 @@ class QuestionsInteractor: QuestionsInteractorType {
     private let repository: QuestionsRepositoryType
     private var currentPage: Int = 0
     private var totalPages: Int = 0
+    private var currentAnswer: String?
     private var submittedQuestions = [Int: String]() // Current page & answer text accordingly
     
     deinit {
@@ -54,6 +55,11 @@ class QuestionsInteractor: QuestionsInteractorType {
         } else {
             return Observable.empty()
         }
+    }
+    
+    func updateAnswer(answer: String) -> Observable<QuestionDetails> {
+         self.currentAnswer = answer
+        return load(page: currentPage, answer: answer)
     }
     
     func submit() -> Observable<QuestionDetails> {
