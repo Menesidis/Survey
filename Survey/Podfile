@@ -11,8 +11,8 @@ target 'Survey' do
   pod 'Moya/RxSwift'
 
   target 'SurveyTests' do
+    pod 'RxBlocking'
     inherit! :search_paths
-    # Pods for testing
   end
 
   target 'SurveyUITests' do

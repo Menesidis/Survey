@@ -487,6 +487,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Survey-SurveyUITests/Pods-Survey-SurveyUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3A2AEC6BA91F64BF67F2A286 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SurveyTests/Pods-SurveyTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SurveyTests/Pods-SurveyTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SurveyTests/Pods-SurveyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		96ABEB620C5C36A799F9E91B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
