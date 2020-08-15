@@ -80,13 +80,21 @@ final class QuestionReactor: Reactor {
             return interactor
                 .updateAnswer(answer: answer)
                 .flatMapLatest { questionDetails in
-                    return self.updateUI(questionDetails: questionDetails)
+                    return Observable.concat([
+                        Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
+                        Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
+                        Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion))
+                    ])
             }
         case .submit:
             return interactor
                 .submit()
                 .flatMapLatest { questionDetails in
-                    return self.updateUI(questionDetails: questionDetails)
+                    return Observable.concat([
+                        Observable.just(Mutation.setSubmittedQuestions(submittedQuestions: questionDetails.submittedQuestions)),
+                        Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
+                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
+                    ])
             }
         }
     }
