@@ -17,7 +17,7 @@ struct MockQuestionsInteractor: QuestionsInteractorType {
                                                name: "name",
                                                previousEnabled: false,
                                                nextEnabled: true,
-                                               submittedQuestions: "submitedQuestions",
+                                               submittedQuestionsString: "submitedQuestions",
                                                buttonType: .submitDisabled,
                                                answeredQuestion: "",
                                                notificationState: .none))
@@ -28,7 +28,7 @@ struct MockQuestionsInteractor: QuestionsInteractorType {
                                                name: "name",
                                                previousEnabled: false,
                                                nextEnabled: true,
-                                               submittedQuestions: "submitedQuestions",
+                                               submittedQuestionsString: "submitedQuestions",
                                                buttonType: .submitDisabled,
                                                answeredQuestion: "",
                                                notificationState: .none))
@@ -39,7 +39,7 @@ struct MockQuestionsInteractor: QuestionsInteractorType {
                                                name: "name",
                                                previousEnabled: false,
                                                nextEnabled: true,
-                                               submittedQuestions: "submitedQuestions",
+                                               submittedQuestionsString: "submitedQuestions",
                                                buttonType: .submitDisabled,
                                                answeredQuestion: "",
                                                notificationState: .none))
@@ -50,7 +50,7 @@ struct MockQuestionsInteractor: QuestionsInteractorType {
                                                name: "name",
                                                previousEnabled: false,
                                                nextEnabled: true,
-                                               submittedQuestions: "submitedQuestions",
+                                               submittedQuestionsString: "submitedQuestions",
                                                buttonType: .submitDisabled,
                                                answeredQuestion: answer,
                                                notificationState: .none))
@@ -61,7 +61,7 @@ struct MockQuestionsInteractor: QuestionsInteractorType {
                                                name: "name",
                                                previousEnabled: false,
                                                nextEnabled: true,
-                                               submittedQuestions: "submitedQuestions",
+                                               submittedQuestionsString: "submitedQuestions",
                                                buttonType: .submitEnabled,
                                                answeredQuestion: "",
                                                notificationState: .none))

@@ -181,7 +181,7 @@ extension QuestionViewController: StoryboardView {
             .disposed(by: disposeBag)
         
         reactorDriver
-            .map {$0.submittedQuestions}
+            .map {$0.submittedQuestionsString}
             .distinctUntilChanged()
             .drive(submittedQuestionsLabel.rx.text)
             .disposed(by: disposeBag)
@@ -201,7 +201,6 @@ extension QuestionViewController: StoryboardView {
             .debounce(.milliseconds(2000)) // Ignore consecutive states for 2 sec
             .map {$0.notificationState}
             .drive(onNext: { [unowned self] state in
-                
                 switch state {
                 case .failed:
                     self.resultLabel.text = "Failed"

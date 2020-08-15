@@ -13,7 +13,7 @@ struct QuestionDetails: Presentable {
     let name: String
     let previousEnabled: Bool
     let nextEnabled: Bool
-    let submittedQuestions: String
+    let submittedQuestionsString: String
     let buttonType: ButtonType
     let answeredQuestion: String
     let notificationState: NotificationState

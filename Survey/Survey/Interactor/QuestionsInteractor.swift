@@ -109,7 +109,7 @@ class QuestionsInteractor: QuestionsInteractorType {
                             name: $0.name,
                             previousEnabled: self.previousEnabled(page: self.currentPage, totalPages: totalPages),
                             nextEnabled: self.nextEnabled(page: self.currentPage, totalPages: totalPages),
-                            submittedQuestions: "Questions submitted: \(self.submittedQuestions.count)", //TODO: Check self!
+                            submittedQuestionsString: "Questions submitted: \(self.submittedQuestions.count)", //TODO: Check self!
                             buttonType: buttonType,
                             answeredQuestion: answeredQuestion,
                             notificationState: notificationState)

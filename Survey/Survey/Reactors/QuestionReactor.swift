@@ -21,7 +21,7 @@ final class QuestionReactor: Reactor {
 
     init(title: String = "-",
          name: String = "-",
-         submittedQuestions: String = "-",
+         submittedQuestionsString: String = "-",
          previousButtonIsEnabled: Bool = false,
          nextButtonIsEnabled: Bool = true,
          interactor: QuestionsInteractorType) {
@@ -29,7 +29,7 @@ final class QuestionReactor: Reactor {
         self.interactor = interactor
         self.initialState = State(title: title,
                                   name: name,
-                                  submittedQuestions: submittedQuestions,
+                                  submittedQuestionsString: submittedQuestionsString,
                                   previousButtonIsEnabled: previousButtonIsEnabled,
                                   nextButtonIsEnabled: nextButtonIsEnabled,
                                   buttonType: .submitDisabled,
@@ -50,7 +50,7 @@ final class QuestionReactor: Reactor {
         case setName(name: String)
         case setPreviousButtonIsEnabled(enabled: Bool)
         case setNextButtonIsEnabled(enabled: Bool)
-        case setSubmittedQuestions(submittedQuestions: String)
+        case setSubmittedQuestionsString(submittedQuestionsString: String)
         case setButtonType(buttonType: ButtonType)
         case setAnswerText(answerText: String)
         case setNotificationState(notificationState: NotificationState)
@@ -91,7 +91,7 @@ final class QuestionReactor: Reactor {
                 .submit()
                 .flatMapLatest { questionDetails in
                     return Observable.concat([
-                        Observable.just(Mutation.setSubmittedQuestions(submittedQuestions: questionDetails.submittedQuestions)),
+                        Observable.just(Mutation.setSubmittedQuestionsString(submittedQuestionsString: questionDetails.submittedQuestionsString)),
                         Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
                         Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
                     ])
@@ -107,8 +107,8 @@ final class QuestionReactor: Reactor {
             state.title = title
         case .setName(name: let name):
             state.name = name
-        case .setSubmittedQuestions(submittedQuestions: let submittedQuestions):
-            state.submittedQuestions = submittedQuestions
+        case .setSubmittedQuestionsString(submittedQuestionsString: let submittedQuestionsString):
+            state.submittedQuestionsString = submittedQuestionsString
         case .setPreviousButtonIsEnabled(enabled: let enabled):
             state.previousButtonIsEnabled = enabled
         case .setNextButtonIsEnabled(enabled: let enabled):
@@ -126,7 +126,7 @@ final class QuestionReactor: Reactor {
     struct State {
         var title: String
         var name: String
-        var submittedQuestions: String
+        var submittedQuestionsString: String
         var previousButtonIsEnabled: Bool
         var nextButtonIsEnabled: Bool
         var buttonType: ButtonType
@@ -138,7 +138,7 @@ final class QuestionReactor: Reactor {
         return Observable.concat([
             Observable.just(Mutation.setTitle(title: questionDetails.title)),
             Observable.just(Mutation.setName(name: questionDetails.name)),
-            Observable.just(Mutation.setSubmittedQuestions(submittedQuestions: questionDetails.submittedQuestions)),
+            Observable.just(Mutation.setSubmittedQuestionsString(submittedQuestionsString: questionDetails.submittedQuestionsString)),
             Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: questionDetails.previousEnabled)),
             Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
             Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
