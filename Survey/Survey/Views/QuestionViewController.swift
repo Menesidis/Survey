@@ -103,9 +103,9 @@ extension QuestionViewController: StoryboardView {
         nextBarButton
             .rx
             .tap
-            .map { [unowned self] _ in
-                self.clearTextField()
-                self.closeTextField()
+            .map { [weak self] _ in
+                self?.clearTextField()
+                self?.closeTextField()
                 return Reactor.Action.next
         }
         .bind(to: reactor.action)
@@ -114,9 +114,9 @@ extension QuestionViewController: StoryboardView {
         previousBarButton
             .rx
             .tap
-            .map { [unowned self] _ in
-                self.clearTextField()
-                self.closeTextField()
+            .map { [weak self] _ in
+                self?.clearTextField()
+                self?.closeTextField()
                 return Reactor.Action.previous
         }
         .bind(to: reactor.action)
@@ -134,8 +134,8 @@ extension QuestionViewController: StoryboardView {
             .rx
             .tap
             .throttle(.milliseconds(2000), scheduler: MainScheduler.instance) //emits only the first item emitted by the source observable in the time window
-            .map { [unowned self] _ in
-                self.closeTextField()
+            .map { [weak self] _ in
+                self?.closeTextField()
                 return Reactor.Action.submit
         }
         .bind(to: reactor.action)
@@ -146,8 +146,8 @@ extension QuestionViewController: StoryboardView {
             .rx
             .tap
             .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
-            .map { [unowned self] _ in
-                self.closeTextField()
+            .map { [weak self] _ in
+                self?.closeTextField()
                 return Reactor.Action.submit
         }
         .bind(to: reactor.action)
@@ -200,30 +200,28 @@ extension QuestionViewController: StoryboardView {
         reactorDriver
             .debounce(.milliseconds(2000)) // Ignore consecutive states for 2 sec
             .map {$0.notificationState}
-            .drive(onNext: { [unowned self] state in
+            .drive(onNext: { [weak self] state in
                 switch state {
                 case .failed:
-                    self.resultLabel.text = "Failed"
-                    self.resultLabel.isHidden = false
-                    self.retryButton.isHidden = false
-                    self.animateNotificationView(state: state)
+                    self?.resultLabel.text = "Failed"
+                    self?.resultLabel.isHidden = false
+                    self?.retryButton.isHidden = false
+                    self?.animateNotificationView(state: state)
                     
                 case .sucessful:
-                    self.resultLabel.text = "sucessful"
-                    self.resultLabel.isHidden = false
-                    self.retryButton.isHidden = true
-                    self.animateNotificationView(state: state)
+                    self?.resultLabel.text = "sucessful"
+                    self?.resultLabel.isHidden = false
+                    self?.retryButton.isHidden = true
+                    self?.animateNotificationView(state: state)
                     
                 case .none:
-                    self.resultLabel.isHidden = true
-                    self.retryButton.isHidden = true
-                    self.notificationView.isHidden = true
+                    self?.resultLabel.isHidden = true
+                    self?.retryButton.isHidden = true
+                    self?.notificationView.isHidden = true
                 }
             })
             .disposed(by: disposeBag)
         
-        //TODO: Close textfield before performing submit request
-        //TODO: Clear textfield during next or previous
         //TODO: Renaming!!!!
         //TODO: Validate everything again & business logic
     }
@@ -235,12 +233,13 @@ extension QuestionViewController: StoryboardView {
         self.notificationView.isHidden = state.isHidden
         self.notificationView.backgroundColor = state.backgroundColor
         
-        self.notificationView.fadeIn { [unowned self] _ in
+        self.notificationView.fadeIn { [weak self] _ in
+            guard let self = self else { return }
             self.view.bringSubviewToFront(self.notificationView)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 // Fade out animation
-                self.notificationView.fadeOut() { [unowned self] _ in
+                self.notificationView.fadeOut() {  _ in
                     self.notificationView.isHidden = !state.isHidden
                 }
                 

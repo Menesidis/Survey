@@ -69,7 +69,8 @@ class QuestionsInteractor: QuestionsInteractorType {
         let request = AnswerRequest(page: currentPage, answer: currentAnswer)
                 
         return repository.submit(request: request)
-            .flatMap { [unowned self] isSucessful -> Observable<QuestionDetails> in
+            .flatMap { [weak self] isSucessful -> Observable<QuestionDetails> in
+                guard let self = self else { return Observable.empty() }
                 if isSucessful {
                     self.submittedQuestions[self.currentPage] = self.currentAnswer
                 }
@@ -83,7 +84,8 @@ class QuestionsInteractor: QuestionsInteractorType {
         let questionsObservable =  repository.questions()
         
         return Observable.combineLatest(totalPagesObservable, questionsObservable)
-            .flatMap { [unowned self] totalPages, questions -> Observable<QuestionDetails> in
+            .flatMap { [weak self] totalPages, questions -> Observable<QuestionDetails> in
+                guard let self = self else { return Observable.empty() }
                 
                 // Set variables
                 self.totalPages = totalPages
@@ -109,7 +111,7 @@ class QuestionsInteractor: QuestionsInteractorType {
                             name: $0.name,
                             previousEnabled: self.previousEnabled(page: self.currentPage, totalPages: totalPages),
                             nextEnabled: self.nextEnabled(page: self.currentPage, totalPages: totalPages),
-                            submittedQuestionsString: "Questions submitted: \(self.submittedQuestions.count)", //TODO: Check self!
+                            submittedQuestionsString: "Questions submitted: \(self.submittedQuestions.count)",
                             buttonType: buttonType,
                             answeredQuestion: answeredQuestion,
                             notificationState: notificationState)

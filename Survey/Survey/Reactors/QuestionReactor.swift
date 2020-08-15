@@ -61,20 +61,47 @@ final class QuestionReactor: Reactor {
         case .load:
             return interactor
                 .load()
-                .flatMapLatest { [unowned self] questionDetails in
-                    return self.updateUI(questionDetails: questionDetails)
+                .flatMapLatest { questionDetails in
+                    return Observable.concat([
+                        Observable.just(Mutation.setTitle(title: questionDetails.title)),
+                        Observable.just(Mutation.setName(name: questionDetails.name)),
+                        Observable.just(Mutation.setSubmittedQuestionsString(submittedQuestionsString: questionDetails.submittedQuestionsString)),
+                        Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: questionDetails.previousEnabled)),
+                        Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
+                        Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
+                        Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
+                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
+                    ])
             }
         case .next:
             return interactor
                 .next()
                 .flatMapLatest { questionDetails in
-                    return self.updateUI(questionDetails: questionDetails)
+                    return Observable.concat([
+                        Observable.just(Mutation.setTitle(title: questionDetails.title)),
+                        Observable.just(Mutation.setName(name: questionDetails.name)),
+                        Observable.just(Mutation.setSubmittedQuestionsString(submittedQuestionsString: questionDetails.submittedQuestionsString)),
+                        Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: questionDetails.previousEnabled)),
+                        Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
+                        Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
+                        Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
+                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
+                    ])
             }
         case .previous:
             return interactor
                 .previous()
                 .flatMapLatest { questionDetails in
-                    return self.updateUI(questionDetails: questionDetails)
+                    return Observable.concat([
+                        Observable.just(Mutation.setTitle(title: questionDetails.title)),
+                        Observable.just(Mutation.setName(name: questionDetails.name)),
+                        Observable.just(Mutation.setSubmittedQuestionsString(submittedQuestionsString: questionDetails.submittedQuestionsString)),
+                        Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: questionDetails.previousEnabled)),
+                        Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
+                        Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
+                        Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
+                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
+                    ])
             }
         case .updateAnswer(answer: let answer):
             return interactor
@@ -132,18 +159,5 @@ final class QuestionReactor: Reactor {
         var buttonType: ButtonType
         var answeredText: String
         var notificationState: NotificationState
-    }
-    
-    private func updateUI(questionDetails: QuestionDetails) -> Observable<QuestionReactor.Mutation> {
-        return Observable.concat([
-            Observable.just(Mutation.setTitle(title: questionDetails.title)),
-            Observable.just(Mutation.setName(name: questionDetails.name)),
-            Observable.just(Mutation.setSubmittedQuestionsString(submittedQuestionsString: questionDetails.submittedQuestionsString)),
-            Observable.just(Mutation.setPreviousButtonIsEnabled(enabled: questionDetails.previousEnabled)),
-            Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
-            Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
-            Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
-            Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
-        ])
     }
 }
