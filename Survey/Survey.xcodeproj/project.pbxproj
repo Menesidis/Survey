@@ -41,6 +41,7 @@
 		1916F0FA24E6B2EA0024FF79 /* StringAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0F924E6B2EA0024FF79 /* StringAdditions.swift */; };
 		1916F0FC24E6BB7E0024FF79 /* QuestionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0FB24E6BB7E0024FF79 /* QuestionInteractorTests.swift */; };
 		1916F0FE24E6DB6F0024FF79 /* QuestionReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0FD24E6DB6F0024FF79 /* QuestionReactorTests.swift */; };
+		1916F10024E6EE1D0024FF79 /* QuestionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0FF24E6EE1D0024FF79 /* QuestionViewControllerTests.swift */; };
 		C0B7A228FB980B06DCF0DD63 /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */; };
 		CE448228482A46D63BE6B269 /* Pods_Survey_SurveyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		1916F0F924E6B2EA0024FF79 /* StringAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAdditions.swift; sourceTree = "<group>"; };
 		1916F0FB24E6BB7E0024FF79 /* QuestionInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionInteractorTests.swift; sourceTree = "<group>"; };
 		1916F0FD24E6DB6F0024FF79 /* QuestionReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReactorTests.swift; sourceTree = "<group>"; };
+		1916F0FF24E6EE1D0024FF79 /* QuestionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewControllerTests.swift; sourceTree = "<group>"; };
 		2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77319F7CC60B77363C36276B /* Pods-Survey-SurveyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey-SurveyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Survey-SurveyUITests/Pods-Survey-SurveyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey_SurveyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +191,7 @@
 				1916F09824E2BF020024FF79 /* Info.plist */,
 				1916F0FB24E6BB7E0024FF79 /* QuestionInteractorTests.swift */,
 				1916F0FD24E6DB6F0024FF79 /* QuestionReactorTests.swift */,
+				1916F0FF24E6EE1D0024FF79 /* QuestionViewControllerTests.swift */,
 			);
 			path = SurveyTests;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1916F10024E6EE1D0024FF79 /* QuestionViewControllerTests.swift in Sources */,
 				1916F0FE24E6DB6F0024FF79 /* QuestionReactorTests.swift in Sources */,
 				1916F0FC24E6BB7E0024FF79 /* QuestionInteractorTests.swift in Sources */,
 			);
