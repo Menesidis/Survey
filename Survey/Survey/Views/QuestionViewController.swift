@@ -231,7 +231,6 @@ extension QuestionViewController: StoryboardView {
             })
             .disposed(by: disposeBag)
         
-        //TODO: Renaming!!!!
         //TODO: Validate everything again & business logic
     }
     

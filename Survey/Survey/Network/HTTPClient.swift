@@ -28,7 +28,7 @@ struct HTTPClient {
     func requestSingle<ER: EntityResponse, E: EntityErrorResponse>(target: TargetType, responseType: ER.Type, errorType: E.Type, keyPath: String? = nil) -> Observable<ER> {
         return provider.rx
             .request(MultiTarget.target(target), callbackQueue: DispatchQueue.global(qos: .background))
-            .filter(statusCodes: 200...404) //TODO: Check this!
+            .filter(statusCodes: 200...404)
             .flatMap({ (response) -> Single<ER> in
                 if let responseType = try? response.map(ER.self, atKeyPath: keyPath) {
                     return Single.just(responseType)
@@ -44,7 +44,7 @@ struct HTTPClient {
     func requestCollection<ER: EntityResponse, E: EntityErrorResponse>(target: TargetType, responseType: [ER].Type, errorType: E.Type, keyPath: String? = nil) -> Observable<[ER]> {
         return provider.rx
             .request(MultiTarget.target(target), callbackQueue: DispatchQueue.global(qos: .background))
-            .filter(statusCodes: 200...404) //TODO: Check this!
+            .filter(statusCodes: 200...404)
             .flatMap({ (response) -> Single<[ER]> in
                 if let responseType = try? response.map([ER].self, atKeyPath: keyPath) {
                     return Single.just(responseType)
