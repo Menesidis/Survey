@@ -73,18 +73,18 @@ class SurveyUITests: XCTestCase {
     func testKeyboardIsHidden() {
         app.buttons["surveyButton"].tap()
         
-        // Keyboard is NOT visible
-        XCTAssertFalse(app.keyboards.count > 0)
+        // Keyboard does not exist
+        XCTAssertFalse(app.keyboards.buttons["return"].exists)
         
         let answerTextField = app.textFields["answerTextField"]
         answerTextField.tap()
         answerTextField.typeText("I will tap Return!!!")
         
-        // Keyboard is visible
-        XCTAssertTrue(app.keyboards.count > 0)
+        // Keyboard exists
+        XCTAssertTrue(app.keyboards.buttons["return"].exists)
         XCUIApplication().keyboards.buttons["return"].tap()
-
-        // Keyboard is NOT visible
-        XCTAssertFalse(app.keyboards.count > 0)
+        
+        // Keyboard does not exist
+        XCTAssertFalse(app.keyboards.buttons["return"].exists)
     }
 }
