@@ -42,6 +42,10 @@
 		1916F0FC24E6BB7E0024FF79 /* QuestionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0FB24E6BB7E0024FF79 /* QuestionInteractorTests.swift */; };
 		1916F0FE24E6DB6F0024FF79 /* QuestionReactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0FD24E6DB6F0024FF79 /* QuestionReactorTests.swift */; };
 		1916F10024E6EE1D0024FF79 /* QuestionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1916F0FF24E6EE1D0024FF79 /* QuestionViewControllerTests.swift */; };
+		19AE64D924E8771E004043E0 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE64D824E8771E004043E0 /* HTTPClientTests.swift */; };
+		19AE64F224E88CB1004043E0 /* TestTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE64F124E88CB1004043E0 /* TestTarget.swift */; };
+		19AE64F424E88D8F004043E0 /* TestEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE64F324E88D8F004043E0 /* TestEntities.swift */; };
+		19AE64F724E91E04004043E0 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE64F624E91E04004043E0 /* AccessibilityIdentifier.swift */; };
 		C0B7A228FB980B06DCF0DD63 /* Pods_Survey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */; };
 		CE448228482A46D63BE6B269 /* Pods_Survey_SurveyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -105,6 +109,10 @@
 		1916F0FB24E6BB7E0024FF79 /* QuestionInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionInteractorTests.swift; sourceTree = "<group>"; };
 		1916F0FD24E6DB6F0024FF79 /* QuestionReactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReactorTests.swift; sourceTree = "<group>"; };
 		1916F0FF24E6EE1D0024FF79 /* QuestionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewControllerTests.swift; sourceTree = "<group>"; };
+		19AE64D824E8771E004043E0 /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
+		19AE64F124E88CB1004043E0 /* TestTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTarget.swift; sourceTree = "<group>"; };
+		19AE64F324E88D8F004043E0 /* TestEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEntities.swift; sourceTree = "<group>"; };
+		19AE64F624E91E04004043E0 /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
 		2B2DF609ED3366BFC7F3E754 /* Pods_Survey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77319F7CC60B77363C36276B /* Pods-Survey-SurveyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey-SurveyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Survey-SurveyUITests/Pods-Survey-SurveyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E3782FFD4DB23908C2A303D /* Pods_Survey_SurveyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey_SurveyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,19 +176,20 @@
 		1916F07E24E2BF010024FF79 /* Survey */ = {
 			isa = PBXGroup;
 			children = (
-				1916F0E024E3D6370024FF79 /* Network */,
-				1916F0DB24E3D5010024FF79 /* Repository */,
-				1916F0CC24E2EF4E0024FF79 /* Models */,
-				1916F0C724E2EE9A0024FF79 /* Interactor */,
+				1916F07F24E2BF010024FF79 /* AppDelegate.swift */,
+				1916F08824E2BF010024FF79 /* Assets.xcassets */,
 				1916F0AF24E2C1940024FF79 /* Coordinator */,
 				1916F0BD24E2CED10024FF79 /* Extensions */,
-				1916F0C424E2E00E0024FF79 /* Reactors */,
-				1916F0B424E2C4200024FF79 /* Views */,
-				1916F07F24E2BF010024FF79 /* AppDelegate.swift */,
-				1916F08524E2BF010024FF79 /* Main.storyboard */,
-				1916F08824E2BF010024FF79 /* Assets.xcassets */,
-				1916F08A24E2BF010024FF79 /* LaunchScreen.storyboard */,
 				1916F08D24E2BF010024FF79 /* Info.plist */,
+				1916F0C724E2EE9A0024FF79 /* Interactor */,
+				1916F08A24E2BF010024FF79 /* LaunchScreen.storyboard */,
+				1916F08524E2BF010024FF79 /* Main.storyboard */,
+				1916F0CC24E2EF4E0024FF79 /* Models */,
+				1916F0E024E3D6370024FF79 /* Network */,
+				1916F0C424E2E00E0024FF79 /* Reactors */,
+				1916F0DB24E3D5010024FF79 /* Repository */,
+				19AE64F524E91DE6004043E0 /* Resources */,
+				1916F0B424E2C4200024FF79 /* Views */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -192,6 +201,7 @@
 				1916F0FB24E6BB7E0024FF79 /* QuestionInteractorTests.swift */,
 				1916F0FD24E6DB6F0024FF79 /* QuestionReactorTests.swift */,
 				1916F0FF24E6EE1D0024FF79 /* QuestionViewControllerTests.swift */,
+				19AE64E224E88A98004043E0 /* Network */,
 			);
 			path = SurveyTests;
 			sourceTree = "<group>";
@@ -317,6 +327,24 @@
 				1916F0E524E3E03C0024FF79 /* QuestionTarget.swift */,
 			);
 			path = Targets;
+			sourceTree = "<group>";
+		};
+		19AE64E224E88A98004043E0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				19AE64D824E8771E004043E0 /* HTTPClientTests.swift */,
+				19AE64F124E88CB1004043E0 /* TestTarget.swift */,
+				19AE64F324E88D8F004043E0 /* TestEntities.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		19AE64F524E91DE6004043E0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				19AE64F624E91E04004043E0 /* AccessibilityIdentifier.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D6F24D677611C846E4BB2788 /* Frameworks */ = {
@@ -614,6 +642,7 @@
 				1916F0D224E2F4190024FF79 /* Presentable.swift in Sources */,
 				1916F0F824E5A1E60024FF79 /* NotificationState.swift in Sources */,
 				1916F0F624E56B7B0024FF79 /* Modifiable.swift in Sources */,
+				19AE64F724E91E04004043E0 /* AccessibilityIdentifier.swift in Sources */,
 				1916F0EA24E402440024FF79 /* QuestionsEntities.swift in Sources */,
 				1916F0BB24E2C4DC0024FF79 /* LandingViewController.swift in Sources */,
 				1916F0CE24E2EF5C0024FF79 /* Question.swift in Sources */,
@@ -633,9 +662,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19AE64D924E8771E004043E0 /* HTTPClientTests.swift in Sources */,
 				1916F10024E6EE1D0024FF79 /* QuestionViewControllerTests.swift in Sources */,
+				19AE64F424E88D8F004043E0 /* TestEntities.swift in Sources */,
 				1916F0FE24E6DB6F0024FF79 /* QuestionReactorTests.swift in Sources */,
 				1916F0FC24E6BB7E0024FF79 /* QuestionInteractorTests.swift in Sources */,
+				19AE64F224E88CB1004043E0 /* TestTarget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
