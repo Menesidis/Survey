@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import RxTest
 @testable import Survey
 
 class QuestionViewControllerTests: XCTestCase {
@@ -30,8 +29,8 @@ class QuestionViewControllerTests: XCTestCase {
         let viewController = QuestionViewController(coder: coder)
         XCTAssertNil(viewController)
     }
-    
-    func testNotificationView() {
+
+    func testNotificationStates() {
         // Initial state
         reactor.stub.state.value = QuestionReactor.State(title: "title1",
                                                          name: "name1",
@@ -51,9 +50,9 @@ class QuestionViewControllerTests: XCTestCase {
                                                               buttonType: .submitEnabled,
                                                               answeredText: "",
                                                               notificationState: .sucessful)
-        
-        let expectation1 = expectation(description: "Sucessful state after 2.0 seconds")
-        let result1 = XCTWaiter.wait(for: [expectation1], timeout: 2.0)
+
+        let expectation1 = expectation(description: "Sucessful state after 3.0 seconds")
+        let result1 = XCTWaiter.wait(for: [expectation1], timeout: 3.0)
         if result1 == XCTWaiter.Result.timedOut {
             XCTAssertEqual(self.viewController.notificationView.isHidden, false)
         } else {
@@ -68,8 +67,8 @@ class QuestionViewControllerTests: XCTestCase {
                                                               buttonType: .submitEnabled,
                                                               answeredText: "",
                                                               notificationState: .failed)
-        let expectation2 = expectation(description: "Failed state after 2 seconds")
-        let result2 = XCTWaiter.wait(for: [expectation2], timeout: 2.0)
+        let expectation2 = expectation(description: "Failed state after 3 seconds")
+        let result2 = XCTWaiter.wait(for: [expectation2], timeout: 3.0)
         if result2 == XCTWaiter.Result.timedOut {
             XCTAssertEqual(self.viewController.notificationView.isHidden, false)
         } else {
