@@ -115,7 +115,7 @@ final class QuestionReactor: Reactor {
                     return Observable.concat([
                         Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
                         Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
-                        Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion))
+                        Observable.just(Mutation.setAnswerText(answerText: answer))
                     ])
             }
         case .submit:

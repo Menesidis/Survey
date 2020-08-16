@@ -113,7 +113,6 @@ extension QuestionViewController: StoryboardView {
             .rx
             .tap
             .map { [weak self] _ in
-                self?.clearTextField()
                 self?.closeTextField()
                 return Reactor.Action.next
         }
@@ -124,7 +123,6 @@ extension QuestionViewController: StoryboardView {
             .rx
             .tap
             .map { [weak self] _ in
-                self?.clearTextField()
                 self?.closeTextField()
                 return Reactor.Action.previous
         }
