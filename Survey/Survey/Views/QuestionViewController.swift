@@ -39,6 +39,7 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupAccessibilityIdentifiers()
     }
     
     private func setupView() {
@@ -70,6 +71,14 @@ class QuestionViewController: UIViewController {
         
         navigationItem.rightBarButtonItems = [nextBarButton, previousBarButton]
         view.backgroundColor = .gray
+    }
+    
+    private func setupAccessibilityIdentifiers() {
+        previousBarButton.accessibilityIdentifier = AccessibilityIdentifier.Question.previousButton.rawValue
+        nextBarButton.accessibilityIdentifier = AccessibilityIdentifier.Question.nextButton.rawValue
+        submitButton.accessibilityIdentifier = AccessibilityIdentifier.Question.submitButton.rawValue
+        answerTextField.accessibilityIdentifier = AccessibilityIdentifier.Question.answerTextField.rawValue
+        notificationView.accessibilityIdentifier = AccessibilityIdentifier.Question.notificationView.rawValue
     }
     
     private func clearTextField() {

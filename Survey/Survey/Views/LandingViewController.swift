@@ -21,6 +21,7 @@ class LandingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupAccessibilityIdentifiers()
     }
     
     private func setupView() {
@@ -35,6 +36,10 @@ class LandingViewController: UIViewController {
         startButton.titleLabel?.adjustsFontForContentSizeCategory = true
         startButton.rounded(cornerRadius: 15.0)
         view.backgroundColor = .gray
+    }
+    
+    private func setupAccessibilityIdentifiers() {
+        startButton.accessibilityIdentifier = AccessibilityIdentifier.Landing.surveyButton.rawValue
     }
     
     // MARK - Actions
