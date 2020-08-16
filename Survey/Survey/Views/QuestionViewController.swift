@@ -166,6 +166,12 @@ extension QuestionViewController: StoryboardView {
         let reactorDriver = reactor.state.asDriver(onErrorJustReturn: reactor.initialState)
         
         reactorDriver
+            .map {$0.answerTextFieldIsEnabled}
+            .distinctUntilChanged()
+            .drive(answerTextField.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        reactorDriver
             .map {$0.previousButtonIsEnabled}
             .distinctUntilChanged()
             .drive(previousBarButton.rx.isEnabled)

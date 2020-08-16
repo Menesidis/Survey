@@ -33,8 +33,9 @@ final class QuestionReactor: Reactor {
                                   previousButtonIsEnabled: previousButtonIsEnabled,
                                   nextButtonIsEnabled: nextButtonIsEnabled,
                                   buttonType: .submitDisabled,
+                                  notificationState: .none,
                                   answeredText: "",
-                                  notificationState: .none)
+                                  answerTextFieldIsEnabled: true)
     }
     
     enum Action {
@@ -52,8 +53,9 @@ final class QuestionReactor: Reactor {
         case setNextButtonIsEnabled(enabled: Bool)
         case setSubmittedQuestionsString(submittedQuestionsString: String)
         case setButtonType(buttonType: ButtonType)
-        case setAnswerText(answerText: String)
         case setNotificationState(notificationState: NotificationState)
+        case setAnswerText(answerText: String)
+        case setAnswerTextFieldIsEnabled(enabled: Bool)
     }
     
     func mutate(action: QuestionReactor.Action) -> Observable<QuestionReactor.Mutation> {
@@ -70,7 +72,8 @@ final class QuestionReactor: Reactor {
                         Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
                         Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
                         Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
-                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
+                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState)),
+                        Observable.just(Mutation.setAnswerTextFieldIsEnabled(enabled: questionDetails.buttonType != .submitted))
                     ])
             }
         case .next:
@@ -85,7 +88,8 @@ final class QuestionReactor: Reactor {
                         Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
                         Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
                         Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
-                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
+                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState)),
+                        Observable.just(Mutation.setAnswerTextFieldIsEnabled(enabled: questionDetails.buttonType != .submitted))
                     ])
             }
         case .previous:
@@ -100,7 +104,8 @@ final class QuestionReactor: Reactor {
                         Observable.just(Mutation.setNextButtonIsEnabled(enabled: questionDetails.nextEnabled)),
                         Observable.just(Mutation.setAnswerText(answerText: questionDetails.answeredQuestion)),
                         Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
-                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
+                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState)),
+                        Observable.just(Mutation.setAnswerTextFieldIsEnabled(enabled: questionDetails.buttonType != .submitted))
                     ])
             }
         case .updateAnswer(answer: let answer):
@@ -120,7 +125,8 @@ final class QuestionReactor: Reactor {
                     return Observable.concat([
                         Observable.just(Mutation.setSubmittedQuestionsString(submittedQuestionsString: questionDetails.submittedQuestionsString)),
                         Observable.just(Mutation.setButtonType(buttonType: questionDetails.buttonType)),
-                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState))
+                        Observable.just(Mutation.setNotificationState(notificationState: questionDetails.notificationState)),
+                        Observable.just(Mutation.setAnswerTextFieldIsEnabled(enabled: questionDetails.buttonType != .submitted))
                     ])
             }
         }
@@ -146,6 +152,8 @@ final class QuestionReactor: Reactor {
             state.answeredText = text
         case .setNotificationState(notificationState: let notificationState):
             state.notificationState = notificationState
+        case .setAnswerTextFieldIsEnabled(enabled: let enabled):
+            state.answerTextFieldIsEnabled = enabled
         }
         return state
     }
@@ -157,7 +165,8 @@ final class QuestionReactor: Reactor {
         var previousButtonIsEnabled: Bool
         var nextButtonIsEnabled: Bool
         var buttonType: ButtonType
-        var answeredText: String
         var notificationState: NotificationState
+        var answeredText: String
+        var answerTextFieldIsEnabled: Bool
     }
 }
