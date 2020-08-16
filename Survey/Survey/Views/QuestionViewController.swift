@@ -142,7 +142,7 @@ extension QuestionViewController: StoryboardView {
         retryButton
             .rx
             .tap
-            .throttle(.milliseconds(2000), scheduler: MainScheduler.instance) //emits only the first item emitted by the source observable in the time window
+            .debounce(.seconds(2), scheduler: MainScheduler.instance) // Ignore consecutive taps for 2 sec
             .map { [weak self] _ in
                 self?.closeTextField()
                 return Reactor.Action.submit
@@ -154,7 +154,7 @@ extension QuestionViewController: StoryboardView {
         submitButton
             .rx
             .tap
-            .throttle(.milliseconds(2000), scheduler: MainScheduler.instance)
+            .debounce(.seconds(2), scheduler: MainScheduler.instance) // Ignore consecutive taps for 2 sec
             .map { [weak self] _ in
                 self?.closeTextField()
                 return Reactor.Action.submit
@@ -213,7 +213,6 @@ extension QuestionViewController: StoryboardView {
             .disposed(by: disposeBag)
         
         reactorDriver
-            .debounce(.milliseconds(2000)) // Ignore consecutive states for 2 sec
             .map {$0.notificationState}
             .drive(onNext: { [weak self] state in
                 switch state {
