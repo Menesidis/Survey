@@ -140,7 +140,7 @@ extension QuestionViewController: StoryboardView {
         retryButton
             .rx
             .tap
-            .debounce(.seconds(2), scheduler: MainScheduler.instance) // Ignore consecutive taps for 2 sec
+            .debounce(.seconds(1), scheduler: MainScheduler.instance) // Ignore consecutive taps for 1 sec
             .map { [weak self] _ in
                 self?.closeTextField()
                 return Reactor.Action.submit
@@ -152,7 +152,7 @@ extension QuestionViewController: StoryboardView {
         submitButton
             .rx
             .tap
-            .debounce(.seconds(2), scheduler: MainScheduler.instance) // Ignore consecutive taps for 2 sec
+            .debounce(.seconds(1), scheduler: MainScheduler.instance) // Ignore consecutive taps for 1 sec
             .map { [weak self] _ in
                 self?.closeTextField()
                 return Reactor.Action.submit
