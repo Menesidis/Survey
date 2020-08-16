@@ -201,6 +201,7 @@ extension QuestionViewController: StoryboardView {
         
         reactorDriver
             .map {$0.buttonType}
+            .distinctUntilChanged()
             .drive(submitButton.rx.buttonType)
             .disposed(by: disposeBag)
         

@@ -14,6 +14,7 @@ enum ButtonType: Equatable {
     case submitEnabled
     case submitDisabled
     case submitted
+    case submitting
 }
 
 extension ButtonType {
@@ -26,6 +27,8 @@ extension ButtonType {
             return .lightGray
         case .submitDisabled:
             return .lightGray
+        case .submitting:
+            return .lightGray
         }
     }
 
@@ -37,6 +40,8 @@ extension ButtonType {
             return "Already submited!"
         case .submitDisabled:
             return "Submit"
+        case .submitting:
+            return "Submitting ... "
         }
     }
     
@@ -47,6 +52,8 @@ extension ButtonType {
         case .submitted:
             return false
         case .submitDisabled:
+            return false
+        case .submitting:
             return false
         }
     }

@@ -129,6 +129,7 @@ final class QuestionReactor: Reactor {
                         Observable.just(Mutation.setAnswerTextFieldIsEnabled(enabled: questionDetails.buttonType != .submitted))
                     ])
             }
+            .startWith(Mutation.setButtonType(buttonType: .submitting))
         }
     }
     
